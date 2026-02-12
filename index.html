@@ -34,8 +34,30 @@
     text-decoration: none;
     font-weight: bold;
     border-radius: 8px;
-    transition: background 0.3s;
+    transition: background 0.3s;.industries {
+  text-align: center; /* Centers the links */
+  margin-top: 50px; /* Adds space at the top */
+}
+
+.industry-link {
+  display: inline-block; /* Makes them inline, but also block for spacing */
+  margin: 10px 20px; /* Adds spacing between the links */
+  font-size: 18px; /* Set the font size */
+  color: #FFD700; /* Golden color for the text */
+  text-decoration: none; /* Removes the underline */
+  padding: 10px 20px; /* Adds padding around the text */
+  background-color: #111; /* Dark background for the links */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.industry-link:hover {
+  background-color: #FFD700; /* Change to golden on hover */
+  color: #111; /* Change text color to dark when hovered */
+}
+
   }
+  
   a.industry-link:hover {
     background-color: #fff200;
   }
