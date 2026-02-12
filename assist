@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H&S Assist - PutaiaoTech Work Products</title>
+
+<!-- Basic styling -->
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #0f1f0f, #061306);
+        color: #ffffff;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #c2a55c;
+        margin-bottom: 20px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .box {
+        background: linear-gradient(145deg, #1a1a1a, #101010);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .box h2 {
+        margin: 0 0 10px 0;
+        color: #c2a55c;
+    }
+
+    .box p {
+        color: #dcdcdc;
+        margin: 0 0 15px 0;
+    }
+
+    .btn {
+        display: inline-block;
+        background: linear-gradient(180deg,#5edb63,#2e9e36);
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .btn:hover {
+        background: linear-gradient(180deg,#6fff73,#35b63f);
+    }
+
+    /* Mobile */
+    @media(max-width: 700px){
+        .grid{
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="title">H&S Assist - PutaiaoTech Work Products</div>
+
+    <div class="grid">
+        <!-- Audits -->
+        <div class="box">
+            <h2>Audits</h2>
+            <p>Log and track workplace audits, inspections, and compliance checks.</p>
+            <a href="audits.html" class="btn">Open Audits</a>
+        </div>
+
+        <!-- Incidents -->
+        <div class="box">
+            <h2>Incidents</h2>
+            <p>Report and manage workplace incidents securely.</p>
+            <a href="incidents.html" class="btn">Open Incidents</a>
+        </div>
+
+        <!-- Training -->
+        <div class="box">
+            <h2>Training</h2>
+            <p>Manage staff training records and certifications.</p>
+            <a href="training.html" class="btn">Open Training</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="box">
+            <h2>Contact</h2>
+            <p>Access support or virtual online contact center for help.</p>
+            <a href="contact.html" class="btn">Open Contact</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
