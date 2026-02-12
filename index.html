@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mustang H & Safety</title>
+<title>Mustang H & Safety - Home</title>
 <style>
   body {
     background-color: #000;
@@ -11,39 +11,53 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-  }
-  header {
-    background-color: #111;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #FFD700;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-  nav {
-    background-color: #111;
-    display: flex;
-    justify-content: center;
-    border-bottom: 2px solid #FFD700;
-  }
-  nav a {
-    color: #FFD700;
-    text-decoration: none;
-    padding: 15px 20px;
-    display: inline-block;
-  }
-  nav a:hover {
-    background-color: #FFD700;
-    color: #000;
   }
   .container {
     max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #111;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    text-align: center;
   }
-  h2 {
-    border-bottom: 2px solid #FFD700;
-    padding-bottom
+  h1 {
+    color: #FFD700;
+    margin-bottom: 30px;
+  }
+  a.industry-link {
+    display: inline-block;
+    margin: 15px;
+    padding: 20px 30px;
+    background-color: #FFD700;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  a.industry-link:hover {
+    background-color: #fff200;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Mustang H & Safety</h1>
+  <p>Select your industry to continue:</p>
+  
+  <a href="climate.html" class="industry-link">Climate</a>
+  <a href="water-quality.html" class="industry-link">Water Quality</a>
+  <a href="aquaculture.html" class="industry-link">Aquaculture</a>
+</div>
+
+<script>
+  // Redirect to Terms & Agreement page if not agreed
+  if(localStorage.getItem('mustangHS_agreed') !== 'true') {
+    window.location.href = 'terms.html';
+  }
+</script>
+
+</body>
+</html>
