@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mustang H & Safety - Terms & Agreement</title>
+<style>
+  body {
+    background-color: #000;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #111;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+  h1, h2 {
+    color: #FFD700;
+  }
+  p {
+    margin-bottom: 15px;
+  }
+  button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 15px 25px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #fff200;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Mustang H & Safety</h1>
+  <h2>Terms & Agreement</h2>
+  
+  <p>By using the Mustang H & Safety application, you acknowledge and agree that:</p>
+  <ul>
+    <li>You are familiar with the relevant <strong>New Zealand Health & Safety legislation</strong> applicable to your industry.</li>
+    <li>You have completed all required <strong>training, inductions, and certifications</strong> necessary for your work.</li>
+    <li>This application is a <strong>compliance management tool</strong> and does <strong>not provide training</strong>.</li>
+    <li>You are responsible for all health and safety obligations while using this app on your worksite.</li>
+  </ul>
+
+  <p>Please confirm that you understand your responsibilities before proceeding.</p>
+
+  <button id="agreeBtn">I Acknowledge & Proceed</button>
+</div>
+
+<script>
+  document.getElementById('agreeBtn').addEventListener('click', function() {
+    localStorage.setItem('mustangHS_agreed', 'true');
+    window.location.href = 'index.html'; // redirect to home/industry selection
+  });
+
+  // Optional: Redirect if already agreed
+  if(localStorage.getItem('mustangHS_agreed') === 'true') {
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>
