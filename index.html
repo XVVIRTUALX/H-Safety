@@ -62,12 +62,12 @@
 <script>
   document.getElementById('agreeBtn').addEventListener('click', function() {
     localStorage.setItem('putaiaoHS_agreed', 'true');
-    window.location.href = "dashboard.html"; // redirect to home/industry selection
+    window.location.href = "dashboard.html";
   });
 
-  // Optional: Redirect if already agreed
+  // Redirect to dashboard if already agreed
   if(localStorage.getItem('putaiaoHS_agreed') === 'true') {
-    window.location.href = 'index.html';
+    window.location.href = 'dashboard.html';
   }
 </script>
 
