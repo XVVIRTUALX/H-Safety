@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H&S AUDITS</title>
+<style>
+  body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
+  h1 { color:#FFD700; text-align:center; }
+  label { display:block; margin:15px 0 5px; }
+  input[type="text"], input[type="date"], textarea { width:100%; padding:10px; border-radius:5px; border:none; margin-bottom:15px; }
+  button { background-color:#FFD700; color:#0D3B66; padding:15px 25px; border:none; font-size:1em; cursor:pointer; border-radius:5px; }
+  button:hover { background-color:#fff200; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>AUDITS</h1>
+  <form>
+    <label>Audit Checklist (tick each item)</label>
+    <input type="checkbox"> Safety Uniforms Daily<br>
+    <input type="checkbox"> Random Drug Testing Weekly<br>
+    <input type="checkbox"> Cleanup & Waste Monthly<br>
+
+    <label>Site / Project Name</label>
+    <input type="text">
+
+    <label>Date & Time</label>
+    <input type="date">
+
+    <label>Comments / Notes</label>
+    <textarea rows="4"></textarea>
+
+    <button type="submit">Submit Audit</button>
+  </form>
+</div>
+</body>
+</html>
