@@ -3,65 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H & Safety Assist - Terms & Agreement</title>
+<title>PutaiaoTech Health & Safety Assist - Terms</title>
+
 <style>
-  body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
-  .container { max-width:800px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
-  h1, h2 { color: #FFD700; }
-  p, li { margin-bottom:15px; }
-  button { background-color:#FFD700; color:#0D3B66; padding:15px 25px; border:none; font-size:1em; cursor:pointer; border-radius:5px; }
-  button:hover { background-color:#fff200; }
+body {
+  background-color: #0D3B66;
+  color: #FFD700;
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding:0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #104E8B;
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+}
+
+h1, h2 {
+  text-align:center;
+}
+
+button {
+  background-color:#FFD700;
+  color:#0D3B66;
+  padding:15px 25px;
+  border:none;
+  font-size:1em;
+  cursor:pointer;
+  border-radius:5px;
+  margin-top:20px;
+}
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+button:hover:enabled {
+  background-color:#fff200;
+}
+
+.hidden {
+  display:none;
+}
 </style>
 </head>
+
 <body>
+
 <div class="container">
-  <h1>PutaiaoTech Health & Safety Assist</h1>
-  <h2>Terms & Agreement</h2>
-  <p>By using this application, you acknowledge and agree that:</p>
-  <ul>
-    <li>You are familiar with the relevant <strong>NZ Health & Safety legislation</strong>.</li>
-    <li>You have completed all required <strong>training, inductions, and certifications</strong>.</li>
-    <li>This app is a <strong>compliance tool</strong> and <strong>does not provide training</strong>.</li>
-    <li>You are responsible for all H&S obligations while on site.</li>
-  </ul>
-  <p>Please confirm you understand your responsibilities before proceeding.</p>
-  <button id="agreeBtn">I Acknowledge & Proceed</button>
+
+<h1>PutaiaoTech Health & Safety Assist</h1>
+
+<h2>Terms & Agreement</h2>
+
+<p>
+By using this application, you acknowledge that you are appropriately trained in Health & Safety practices and understand your statutory obligations.
+</p>
+
+<h2>Important Compliance Notice</h2>
+
+<ul>
+  <li>This application does not replace site-specific risk management processes.</li>
+  <li>This application does not replace qualified or professional Health & Safety officers.</li>
+  <li>This application does not replace Safe Work Method Statements (SWMS).</li>
+  <li>This application does not replace Job Safety Analysis (JSA).</li>
+  <li>This application does not replace regulator-mandated compliance systems or statutory obligations.</li>
+</ul>
+
+<p>
+Users remain fully responsible for ensuring compliance with all applicable New Zealand legislation, including the Health and Safety at Work Act 2015.
+</p>
+
+<label>
+  <input type="checkbox" id="acknowledgeBox">
+  I confirm I understand the above compliance notice.
+</label>
+
+<br>
+
+<button id="continueBtn" disabled>Continue</button>
+
+<!-- FULL TERMS SECTION -->
+<div id="fullTerms" class="hidden">
+
+<h2>Full Terms & Conditions</h2>
+
+<p>
+PutaiaoTech Health & Safety Assist is a documentation and compliance support tool only.
+It does not provide legal advice, certification, training, or replace statutory workplace obligations.
+</p>
+
+<p>
+Continued use beyond any trial period constitutes agreement to commercial licensing terms.
+Users are responsible for ensuring accuracy of records and maintaining appropriate workplace safety systems.
+</p>
+
+<label>
+  <input type="checkbox" id="agreeBox">
+  I have read and agree to the full Terms & Conditions.
+</label>
+
+<br>
+
+<button id="finalAgreeBtn" disabled>I Agree & Enter System</button>
+
 </div>
-<body>
 
-<div class="container">
-
-  <h1>PutaiaoTech Health & Safety Assist</h1>
-
-  <h2>Terms & Agreement</h2>
-
-  <p>By using this application, you acknowledge and agree that:</p>
-
-  <!-- Existing bullet points here -->
-
-  <h2>Important Compliance Notice</h2>
-
-  <ul>
-    <li>This application does not replace site-specific risk management processes.</li>
-    <li>This application does not replace qualified or professional Health & Safety officers.</li>
-    <li>This application does not replace Safe Work Method Statements (SWMS).</li>
-    <li>This application does not replace Job Safety Analysis (JSA).</li>
-    <li>This application does not replace regulator-mandated compliance systems or statutory obligations.</li>
-  </ul>
-
-  <p>
-    Users remain fully responsible for ensuring compliance with all applicable New Zealand legislation and workplace safety requirements.
+<footer style="margin-top:40px; padding:20px; text-align:center; border-top:2px solid #FFD700;">
+  <p style="font-size:0.9em;">
+    © 2026 PutaiaoTech. All Rights Reserved.
   </p>
-
-  <button>I Acknowledge & Proceed</button>
+</footer>
 
 </div>
 
-</body>
 <script>
-  document.getElementById('agreeBtn').addEventListener('click', function() {
-    window.location.href = "dashboard.html";
-  });
+
+// Enable Continue button when first box ticked
+document.getElementById("acknowledgeBox").addEventListener("change", function() {
+  document.getElementById("continueBtn").disabled = !this.checked;
+});
+
+// Show full terms
+document.getElementById("continueBtn").addEventListener("click", function() {
+  document.getElementById("fullTerms").classList.remove("hidden");
+  this.style.display = "none";
+});
+
+// Enable final button when agree ticked
+document.getElementById("agreeBox").addEventListener("change", function() {
+  document.getElementById("finalAgreeBtn").disabled = !this.checked;
+});
+
+// Redirect to dashboard
+document.getElementById("finalAgreeBtn").addEventListener("click", function() {
+  window.location.href = "dashboard.html";
+});
+
 </script>
+
 </body>
 </html>
