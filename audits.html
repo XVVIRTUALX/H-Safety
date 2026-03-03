@@ -3,37 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>H&S AUDITS</title>
+<title>PutaiaoTech H&S - Audits</title>
 <style>
-  body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
-  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
-  h1 { color:#FFD700; text-align:center; }
-  label { display:block; margin:15px 0 5px; }
-  input[type="text"], input[type="date"], textarea { width:100%; padding:10px; border-radius:5px; border:none; margin-bottom:15px; }
-  button { background-color:#FFD700; color:#0D3B66; padding:15px 25px; border:none; font-size:1em; cursor:pointer; border-radius:5px; }
+  body { background-color:#FFFFFF; color:#111111; font-family: Arial, sans-serif; margin:0; padding:0; }
+  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#FFFFFF; border-radius:12px; }
+  h1 { background-color:#0A3D62; color:#FFD700; padding:15px; border-radius:8px; text-align:center; }
+  .section { background-color:#0A3D62; color:#FFFFFF; padding:20px; margin:15px 0; border-radius:8px; }
+  button { background-color:#FFD700; color:#0A3D62; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-top:10px; }
   button:hover { background-color:#fff200; }
+  p, li { color:#111111; }
 </style>
 </head>
-<body>
+<body class="page3">
+
 <div class="container">
   <h1>AUDITS</h1>
-  <form>
-    <label>Audit Checklist (tick each item)</label>
-    <input type="checkbox"> Safety Uniforms Daily<br>
-    <input type="checkbox"> Random Drug Testing Weekly<br>
-    <input type="checkbox"> Cleanup & Waste Monthly<br>
 
-    <label>Site / Project Name</label>
-    <input type="text">
+  <div class="section">
+    <h2>Site Audit Checklist</h2>
+    <p>Conduct daily/weekly/monthly checks based on Health & Safety at Work Act 2015, Sections 36-37 (NZ).</p>
+  </div>
 
-    <label>Date & Time</label>
-    <input type="date">
+  <div class="section">
+    <h2>Environmental Compliance Checklist</h2>
+    <p>Track environmental requirements, safety uniforms, and hazard management.</p>
+  </div>
 
-    <label>Comments / Notes</label>
-    <textarea rows="4"></textarea>
+  <div class="section">
+    <h2>Equipment & Instrumentation Checklist</h2>
+    <p>Ensure tools and machinery meet compliance standards.</p>
+  </div>
 
-    <button type="submit">Submit Audit</button>
-  </form>
+  <div class="section">
+    <h2>Worksite Hazard Checklist</h2>
+    <p>Identify hazards, control measures, and staff training verification.</p>
+  </div>
+
+  <button onclick="alert('Submit will export latest updates to email/USB with date and time.')">Submit</button>
+
+  <p style="text-align:center; font-size:0.9em; margin-top:20px;">@copyright PutaiaoTech - For use by trained Health & Safety users only. Not a training tool.</p>
 </div>
+
 </body>
 </html>
