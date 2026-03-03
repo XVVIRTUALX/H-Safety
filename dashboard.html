@@ -5,33 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PutaiaoTech H&S Dashboard</title>
 <style>
-  body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
-  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
-  h1 { text-align:center; color:#FFD700; }
-  .grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; margin-top:30px; }
-  .module { background-color:#FFD700; color:#0D3B66; padding:25px; border-radius:8px; text-align:center; font-weight:bold; cursor:pointer; font-size:1.2em; transition:0.3s; }
+  body { background-color:#0A3D62; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#0A3D62; border:2px solid #FFD700; border-radius:12px; }
+  h1 { color:#FFD700; text-align:center; }
+  .module { background-color:#FFD700; color:#0A3D62; padding:20px; margin:10px 0; cursor:pointer; text-align:center; font-weight:bold; border-radius:8px; font-size:1.1em; }
   .module:hover { background-color:#fff200; }
+  p { text-align:center; font-size:0.9em; margin-top:20px; font-weight:bold; }
 </style>
 </head>
-<body>
+<body class="page2">
+
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
-  <div class="grid">
-    <div class="module" onclick="location.href='audits.html'">AUDITS</div>
-    <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
-    <div class="module" onclick="location.href='incidents.html'">INCIDENTS</div>
-    <div class="module" onclick="location.href='training.html'">TRAINING</div>
-    <div class="module" onclick="location.href='projects.html'">PROJECTS</div>
-    <div class="module" onclick="location.href='visitors.html'">VISITORS</div>
-    <div class="module" onclick="location.href='emergency.html'">EMERGENCY</div>
-    <div class="module" onclick="location.href='annual_review.html'">ANNUAL REVIEW</div>
 
-<div class="container">
-  <!-- Your dashboard content here -->
+  <div class="module" onclick="location.href='audits.html'">AUDITS</div>
+  <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
+  <div class="module" onclick="location.href='incidents.html'">INCIDENTS</div>
+  <div class="module" onclick="location.href='training.html'">TRAINING</div>
+  <div class="module" onclick="location.href='projects.html'">PROJECTS</div>
+  <div class="module" onclick="location.href='visitors.html'">VISITORS</div>
+  <div class="module" onclick="location.href='annual_review.html'">ANNUAL REVIEW</div>
+  <div class="module" onclick="location.href='emergency.html'">EMERGENCY REPORTING</div>
 
-  <p style="text-align:center; font-size:0.9em; margin-top:20px; font-weight:bold; color:#FFD700;">
-    Free Trial Access – Commercial licensing required for continued use beyond trial period.
-  </p>
+  <p>Free Trial Access – Commercial licensing required for continued use beyond trial period.</p>
 </div>
+
 </body>
 </html>
