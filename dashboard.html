@@ -4,58 +4,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PutaiaoTech H&S Dashboard</title>
+
 <style>
   body {
     background-color: #0D3B66;
     color: #FFD700;
     font-family: Arial, sans-serif;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
-  .container {
-    max-width:900px;
-    margin:50px auto;
-    padding:30px;
-    background-color:#104E8B;
-    border:2px solid #FFD700;
-    border-radius:12px;
-  }
-  h1 { text-align:center; color:#FFD700; }
 
-  /* Vertical grid */
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #FFD700;
+  }
+
+  .panel {
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  .button {
+    background-color: #FFD700;
+    color: #0D3B66;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #fff200;
+  }
+
   .grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top:30px;
+    margin-top: 30px;
   }
 
   .module {
-    background-color:#FFD700;
-    color:#0D3B66;
-    padding:25px;
-    border-radius:8px;
-    text-align:center;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:1.2em;
-    transition:0.3s;
+    background-color: #FFD700;
+    color: #0D3B66;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: 0.3s;
   }
-  .module:hover { background-color:#fff200; }
+
+  .module:hover {
+    background-color: #fff200;
+  }
+
+  .note {
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #FFD700;
+  }
 </style>
 </head>
+
 <body>
 
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
-  <div class="grid">
-    <!-- Free Trial / Payment Box -->
-    <div class="module" onclick="location.href='payment.html'">
-      Health & Safety Assist – Free 1-Month Trial / $275 Annual License<br>
-      <span style="display:block; margin-top:10px; font-weight:bold;">Start Free Trial / Request Quote</span>
+
+  <!-- Trial / Payment Panel -->
+  <div class="panel">
+    <h2>Free 1-Month Trial / $275 Annual License</h2>
+
+    <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
+      
+      <!-- Start Free Trial -->
+      <a href="#" id="startTrialBtn" class="button">
+        Start Free Trial
+      </a>
+
+      <!-- Immediate Payment -->
+      <a href="payment.html" class="button">
+        Request Quote / Pay Now
+      </a>
+
     </div>
 
-    <!-- Existing Modules stacked vertically -->
+    <p style="font-size:0.85em; margin-top:15px;">
+      Free trial is automatically activated. Payment required after 30 days if continuing use.
+    </p>
+  </div>
+
+  <!-- Modules -->
+  <div class="grid">
     <div class="module" onclick="location.href='audits.html'">AUDITS</div>
     <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
     <div class="module" onclick="location.href='incidents.html'">INCIDENTS</div>
@@ -65,14 +126,38 @@
     <div class="module" onclick="location.href='emergency.html'">EMERGENCY</div>
     <div class="module" onclick="location.href='annual_review.html'">ANNUAL REVIEW</div>
   </div>
-</div>
 
-<!-- Free Trial Note -->
-<div class="container">
-  <p style="text-align:center; font-size:0.9em; margin-top:20px; font-weight:bold; color:#FFD700;">
+  <p class="note">
     Free Trial Access – Commercial licensing required for continued use beyond trial period.
   </p>
+
 </div>
+
+<script>
+document.getElementById('startTrialBtn').addEventListener('click', function() {
+
+    let trialStart = localStorage.getItem('HS_TrialStart');
+
+    if (trialStart) {
+        alert("Free Trial already active.");
+        window.location.href = "audits.html";
+        return;
+    }
+
+    let userName = prompt("Enter your name to start the free trial:");
+
+    if (!userName) {
+        alert("Name is required to start the trial.");
+        return;
+    }
+
+    localStorage.setItem('HS_TrialStart', new Date().toISOString());
+    localStorage.setItem('HS_TrialUser', userName);
+
+    alert("Free Trial started for " + userName + "!");
+    window.location.href = "audits.html";
+});
+</script>
 
 </body>
 </html>
