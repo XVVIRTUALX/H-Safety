@@ -2,182 +2,81 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>H&S Assist Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Audit Form</title>
 <style>
-/* ===== COLORS ===== */
-:root {
-    --bg-light: #F5F5F5;
-    --panel-bg: #E0F2F1;
-    --btn-primary: #00796B;
-    --btn-hover: #004D40;
-    --text-dark: #212121;
-    --alert-red: #D32F2F;
-    --alert-amber: #FFA000;
-    --alert-green: #388E3C;
-}
-
-/* ===== GLOBAL ===== */
-body {
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg-light);
-    color: var(--text-dark);
-}
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* ===== DASHBOARD ===== */
-.dashboard {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-.panel {
-    background: var(--panel-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-.panel h2 {
-    margin-top:0;
-}
-
-/* ===== BUTTONS ===== */
-.btn {
-    display:inline-block;
-    background: var(--btn-primary);
-    color: #fff;
-    padding: 12px 24px;
-    margin:5px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-.btn:hover { background: var(--btn-hover); }
-
-/* ===== ALERT LABELS ===== */
-.alert {
-    padding:5px 10px;
-    border-radius:5px;
-    color:white;
-    font-weight:bold;
-}
-.alert-red { background: var(--alert-red); }
-.alert-amber { background: var(--alert-amber); }
-.alert-green { background: var(--alert-green); }
-
-/* ===== TABLES ===== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top:10px;
-}
-th, td {
-    border:1px solid #ccc;
-    padding:8px;
-    text-align:left;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:900px){
-    .dashboard {
-        grid-template-columns:1fr;
-    }
-}
+  body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+  header { background-color: #104E8B; padding: 20px; text-align: center; border-bottom: 2px solid #FFD700; }
+  header h1 { margin:0; }
+  .container { max-width:900px; margin:40px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
+  label { display:block; margin-top:15px; font-weight:bold; }
+  input, textarea, select { width:100%; padding:10px; margin-top:5px; border:none; border-radius:5px; font-size:1em; }
+  textarea { resize: vertical; }
+  .checkbox-group label { display:block; margin:8px 0; font-weight:normal; }
+  button { margin-top:20px; background-color:#FFD700; color:#0D3B66; padding:15px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; transition:0.3s; }
+  button:hover { background-color:#fff200; }
+  .back-link { text-align:center; margin-top:20px; }
+  .back-link a { color:#FFD700; text-decoration:none; font-weight:bold; }
+  footer { text-align:center; padding:20px; margin-top:40px; border-top:2px solid #FFD700; }
 </style>
 </head>
 <body>
 
+<header>
+  <h1>PutaiaoTech Health & Safety – Audit Form</h1>
+</header>
+
 <div class="container">
-    <h1>H&S Assist Dashboard</h1>
 
-    <!-- DASHBOARD -->
-    <div class="dashboard">
-        <!-- LEFT PANEL -->
-        <div class="panel">
-            <h2>Shift Summary</h2>
-            <p>Staff On-Site: 12</p>
-            <p>Visitors: 3</p>
+  <form>
+    <label for="auditType">Audit Type</label>
+    <select id="auditType">
+      <option>Daily</option>
+      <option>Weekly</option>
+      <option>Monthly</option>
+      <option>Annual</option>
+    </select>
 
-            <h2>Quick Actions</h2>
-            <a class="btn" onclick="alert('Log Emergency clicked')">Log Emergency</a>
-            <a class="btn" onclick="alert('Conduct Audit clicked')">Conduct Audit</a>
-            <a class="btn" onclick="alert('Check Equipment clicked')">Check Equipment</a>
-            <a class="btn" onclick="alert('Visitor Log clicked')">Visitor Log</a>
-            <a class="btn" onclick="alert('Training Verification clicked')">Training Verification</a>
-            <a class="btn" onclick="alert('End-of-Day Report clicked')">End-of-Day Report</a>
-        </div>
+    <label for="siteName">Site / Project Name</label>
+    <input type="text" id="siteName" placeholder="Enter site name">
 
-        <!-- RIGHT PANEL -->
-        <div class="panel">
-            <h2>Alerts / Notifications</h2>
-            <p class="alert alert-red">1 Critical Incident</p>
-            <p class="alert alert-amber">2 Pending Trainings</p>
-            <p class="alert alert-green">All Other Checks OK</p>
-        </div>
+    <label for="auditDate">Date & Time</label>
+    <input type="datetime-local" id="auditDate">
+
+    <label for="auditorName">Auditor Name</label>
+    <input type="text" id="auditorName" placeholder="Enter your name">
+
+    <label>H&S Checklist (tick items that are compliant)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> PPE compliance verified</label>
+      <label><input type="checkbox"> Emergency exits unobstructed</label>
+      <label><input type="checkbox"> Equipment inspected and functional</label>
+      <label><input type="checkbox"> Hazardous substances stored safely</label>
+      <label><input type="checkbox"> Staff trained on emergency procedures</label>
+      <label><input type="checkbox"> Incident reporting procedures followed</label>
+      <label><input type="checkbox"> Corrective actions recorded</label>
     </div>
 
-    <!-- EMERGENCY MODULE -->
-    <div class="panel">
-        <h2>Emergency Event – Fire – Zone 1</h2>
-        <p>Start Time: 08:45 | Emergency Officer(s): John, Maria</p>
+    <label for="incidentDetails">Incident / Accident Details</label>
+    <textarea id="incidentDetails" rows="4" placeholder="Describe any incidents, injuries or hazards observed"></textarea>
 
-        <h3>Audit Checklist</h3>
-        <ul>
-            <li>✔ Evacuation complete</li>
-            <li>✔ First aid administered</li>
-            <li>✔ Equipment checked</li>
-            <li>⚠ Hazardous substances secured</li>
-            <li>✔ Supervisors notified</li>
-            <li>Notes: ___________________________</li>
-        </ul>
+    <label for="witnesses">Witnesses (if applicable)</label>
+    <input type="text" id="witnesses" placeholder="Enter names">
 
-        <h3>Muster Points</h3>
-        <p>Zone 1 – 20 staff accounted ✅</p>
-        <p>Zone 2 – 2 visitors missing 🔴</p>
+    <label for="correctiveActions">Corrective Actions Taken / Recommended</label>
+    <textarea id="correctiveActions" rows="4"></textarea>
 
-        <a class="btn" onclick="alert('End Event')">End Event</a>
-        <a class="btn" onclick="alert('Save & Submit')">Save & Submit</a>
-    </div>
+    <button type="submit">Submit Audit</button>
+  </form>
 
-    <!-- VISITOR LOG -->
-    <div class="panel">
-        <h2>Visitor Log</h2>
-        <table>
-            <tr><th>Name</th><th>Company</th><th>Time In</th><th>Time Out</th><th>Visiting</th></tr>
-            <tr><td>Tom Lee</td><td>Acme Ltd</td><td>08:05</td><td>10:30</td><td>Zone 2</td></tr>
-            <tr><td>Maria Kim</td><td>Enviro NZ</td><td>09:00</td><td>12:15</td><td>Zone 1</td></tr>
-        </table>
-        <a class="btn" onclick="alert('Add Visitor')">Add Visitor</a>
-    </div>
-
-    <!-- AUDITS / INCIDENTS -->
-    <div class="panel">
-        <h2>Audits / Incident Reports</h2>
-        <table>
-            <tr><th>Type</th><th>Date</th><th>Staff Involved</th><th>Status</th><th>Notes</th></tr>
-            <tr><td>Accident</td><td>18/02/2026</td><td>John Doe</td><td>Pending ⚠️</td><td>Chemical spill near Lab 2</td></tr>
-            <tr><td>Audit</td><td>18/02/2026</td><td>Jane Smith</td><td>Complete ✅</td><td>PPE compliance check</td></tr>
-        </table>
-        <a class="btn" onclick="alert('Start New Audit')">Start New Audit</a>
-        <a class="btn" onclick="alert('Export PDF')">Export PDF</a>
-    </div>
-
-    <!-- END OF DAY REPORT -->
-    <div class="panel">
-        <h2>End-of-Day Report</h2>
-        <p>Summary of incidents, audits, and emergency events. Pending actions highlighted.</p>
-        <a class="btn" onclick="alert('Export PDF')">Export PDF</a>
-        <a class="btn" onclick="alert('Send to Supervisor')">Send to Supervisor</a>
-    </div>
-
+  <div class="back-link">
+    <a href="dashboard.html">← Back to Dashboard</a>
+  </div>
 </div>
+
+<footer>
+  &copy; 2026 PutaiaoTech | Managed & Marketed by Virtual Online Contact Centre
+</footer>
 
 </body>
 </html>
