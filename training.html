@@ -3,122 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H&S – Training</title>
-
+<title>PutaiaoTech H&S - Training</title>
 <style>
   body {
-    background-color: #0D3B66;
-    color: #FFD700;
+    background-color:#4A90E2;
+    color:#FFFFFF;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
   }
-
   header {
-    background-color: #104E8B;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #FFD700;
+    background-color:#FFEB3B;
+    color:#1A237E;
+    padding:1rem;
+    text-align:center;
+    font-size:1.5rem;
   }
-
-  header h1 {
-    margin: 0;
+  main {
+    padding:2rem;
+    max-width:800px;
+    margin:auto;
   }
-
-  .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #104E8B;
-    border: 2px solid #FFD700;
-    border-radius: 12px;
+  table {
+    width:100%;
+    border-collapse: collapse;
+    margin-top:20px;
   }
-
-  label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
+  th, td {
+    border:1px solid #fff;
+    padding:8px;
+    text-align:left;
   }
-
-  input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: none;
-    font-size: 1em;
+  input, button {
+    padding:8px;
+    margin:5px 0;
+    border-radius:5px;
+    border:none;
   }
-
-  textarea {
-    resize: vertical;
-  }
-
   button {
-    margin-top: 20px;
-    background-color: #FFD700;
-    color: #0D3B66;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    transition: 0.3s;
+    background-color:#FFD700;
+    color:#0D3B66;
+    font-weight:bold;
+    cursor:pointer;
   }
-
   button:hover {
-    background-color: #fff200;
-  }
-
-  .disclaimer {
-    margin-top: 30px;
-    font-size: 0.9em;
-    border-top: 1px solid #FFD700;
-    padding-top: 15px;
-  }
-
-  .back-link {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .back-link a {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-top: 2px solid #FFD700;
+    background-color:#fff200;
   }
 </style>
 </head>
-
 <body>
 
-<header>
-  <h1>PutaiaoTech Health & Safety – Training Records</h1>
-</header>
+<header>Health & Safety Training</header>
 
-<div class="container">
+<main>
+  <h2>Add Training Record</h2>
+  <label for="trainingName">Training Name / Description:</label>
+  <input type="text" id="trainingName" placeholder="e.g., Fire Safety Induction">
+  <label for="trainingDate">Training Date:</label>
+  <input type="date" id="trainingDate">
+  <button id="addTrainingBtn">Add Training</button>
 
-  <form>
+  <h2>Training Records</h2>
+  <table id="trainingTable">
+    <tr>
+      <th>Training Name</th>
+      <th>Date</th>
+    </tr>
+  </table>
 
-    <label for="employeeName">Employee Name</label>
-    <input type="text" id="employeeName" required>
+  <button id="downloadCSV">Download Training Records</button>
+</main>
 
-    <label for="trainingType">Training Type</label>
-    <select id="trainingType">
-      <option>Induction</option>
-      <option>Toolbox Talk</option>
-      <option>Equipment Training</option>
-      <option>Hazard Awareness</option>
-      <option>First Aid</option>
-      <option>Other</option>
-    </select>
+<script>
+  // Load from localStorage
+  const trainingTable = document.getElementById('trainingTable');
+  let trainingRecords = JSON.parse(localStorage.getItem('trainingRecords') || "[]");
 
-    <label for="trainingDate">Training Date</label>
-    <input type="date"
+  function renderTable() {
+    // Clear all rows except header
+    trainingTable.innerHTML = '<tr><th>Training Name</th><th>Date</th></tr>';
+    trainingRecords.forEach(record => {
+      const row = trainingTable.insertRow();
+      row.insertCell(0).innerText = record.name;
+      row.insertCell(1).innerText = record.date;
+    });
+  }
+
+  renderTable();
+
+  // Add new training
+  document.getElementById('addTrainingBtn').addEventListener('click', () => {
+    const name = document.getElementById('trainingName').value.trim();
+    const date = document.getElementById('trainingDate').value;
+    if (!name || !date) {
+      alert('Both fields are required');
+      return;
+    }
+    trainingRecords.push({ name, date });
+    localStorage.setItem('trainingRecords', JSON.stringify(trainingRecords));
+    renderTable();
+    document.getElementById('trainingName').value = '';
+    document.getElementById('trainingDate').value = '';
+  });
+
+  // Download CSV
+  document.getElementById('downloadCSV').addEventListener('click', () => {
+    const csv = trainingRecords.map(r => `"${r.name}","${r.date}"`).join("\n");
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'training_records.csv';
+    link.click();
+  });
+</script>
+
+</body>
+</html>
