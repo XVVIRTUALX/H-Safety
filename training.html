@@ -3,25 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H&S - Training</title>
+<title>PutaiaoTech H&S – Training</title>
+
 <style>
-  body { background-color:#4A90E2; color:#FFFFFF; font-family: Arial, sans-serif; margin:0; padding:0; }
-  header { background-color:#FFEB3B; color:#1A237E; padding:1rem; text-align:center; font-size:1.5rem; }
-  main { padding:2rem; }
-  ul { margin-left:2rem; }
-  footer { background-color:#FFEB3B; color:#1A237E; text-align:center; padding:1rem; position:fixed; width:100%; bottom:0; }
+  body {
+    background-color: #0D3B66;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #104E8B;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #FFD700;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1em;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: #FFD700;
+    color: #0D3B66;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #fff200;
+  }
+
+  .disclaimer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    border-top: 1px solid #FFD700;
+    padding-top: 15px;
+  }
+
+  .back-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .back-link a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #FFD700;
+  }
 </style>
 </head>
+
 <body>
-<header>Health & Safety Training</header>
-<main>
-  <p>This training record:</p>
-  <ul>
-    <li>Does not replace formal training courses or certifications.</li>
-    <li>Does not replace site-specific training requirements.</li>
-    <li>Does not replace Health & Safety officers’ guidance.</li>
-  </ul>
-</main>
-<footer>&copy; 2026 PutaiaoTech | All rights reserved</footer>
-</body>
-</html>
+
+<header>
+  <h1>PutaiaoTech Health & Safety – Training Records</h1>
+</header>
+
+<div class="container">
+
+  <form>
+
+    <label for="employeeName">Employee Name</label>
+    <input type="text" id="employeeName" required>
+
+    <label for="trainingType">Training Type</label>
+    <select id="trainingType">
+      <option>Induction</option>
+      <option>Toolbox Talk</option>
+      <option>Equipment Training</option>
+      <option>Hazard Awareness</option>
+      <option>First Aid</option>
+      <option>Other</option>
+    </select>
+
+    <label for="trainingDate">Training Date</label>
+    <input type="date"
