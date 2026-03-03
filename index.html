@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H&S Terms & Agreement</title>
+<title>PutaiaoTech H & Safety Assist - Terms & Agreement</title>
 <style>
   body {
-    background-color: #0A3D62; /* dark blue background */
-    color: #FFFFFF; /* main text white */
+    background-color: #1E73BE; /* Blue header / background */
+    color: #FFFFFF; /* White text */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,31 +16,26 @@
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background-color: #0A3D62; /* blue container */
-    border: 2px solid #FFD700; /* yellow border */
+    background-color: #F0F4F8; /* Light background for readability */
+    border: 3px solid #FFD700; /* Yellow border */
     border-radius: 12px;
+    color: #000;
   }
   h1, h2 {
-    color: #FFD700; /* yellow headings */
-    text-align: center;
+    color: #FFD700; /* Yellow headers */
   }
-  p, li {
-    color: #FFFFFF; /* body text white */
-    margin-bottom: 15px;
-  }
-  ul {
-    padding-left: 20px;
+  ul li {
+    margin-bottom: 10px;
   }
   button {
-    background-color: #FFD700; /* yellow button */
-    color: #0A3D62; /* blue text */
+    background-color: #FFD700;
+    color: #1E73BE;
     padding: 15px 25px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 1em;
-    display: block;
-    margin: 20px auto;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
   }
   button:hover {
     background-color: #fff200;
@@ -48,13 +43,11 @@
 </style>
 </head>
 <body>
-
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
   <h2>Terms & Agreement</h2>
 
-  <p>By using this application, you acknowledge and agree to the following compliance requirements:</p>
-  
+  <p>By using this application, you acknowledge and agree that:</p>
   <ul>
     <li>This application does not replace site-specific risk management processes.</li>
     <li>This application does not replace qualified or professional Health & Safety officers.</li>
@@ -63,16 +56,14 @@
     <li>This application does not replace regulator-mandated compliance systems or statutory obligations.</li>
   </ul>
 
-  <p>It is intended for use by appropriately trained Health & Safety personnel and <strong>is not a training tool</strong>. You remain responsible for all health and safety obligations on site.</p>
-
+  <p>Please confirm that you understand your responsibilities before proceeding.</p>
   <button id="agreeBtn">I Acknowledge & Proceed</button>
 </div>
 
 <script>
-  document.getElementById('agreeBtn').addEventListener('click', function() {
+document.getElementById('agreeBtn').addEventListener('click', function() {
     window.location.href = "dashboard.html";
-  });
+});
 </script>
-
 </body>
 </html>
