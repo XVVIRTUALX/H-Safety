@@ -3,26 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H&S - Incident</title>
+<title>PutaiaoTech H&S – Incidents</title>
+
 <style>
-  body { background-color:#4A90E2; color:#FFFFFF; font-family: Arial, sans-serif; margin:0; padding:0; }
-  header { background-color:#FFEB3B; color:#1A237E; padding:1rem; text-align:center; font-size:1.5rem; }
-  main { padding:2rem; }
-  ul { margin-left:2rem; }
-  footer { background-color:#FFEB3B; color:#1A237E; text-align:center; padding:1rem; position:fixed; width:100%; bottom:0; }
+  body {
+    background-color: #0D3B66;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #104E8B;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #FFD700;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1em;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: #FFD700;
+    color: #0D3B66;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #fff200;
+  }
+
+  .back-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .back-link a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #FFD700;
+  }
 </style>
 </head>
+
 <body>
-<header>Incident Reporting</header>
-<main>
-  <p>Report all incidents accurately and promptly:</p>
-  <ul>
-    <li>Include full details of the incident.</li>
-    <li>Notify your supervisor immediately.</li>
-    <li>Follow site Health & Safety reporting procedures.</li>
-    <li>Do not attempt to handle hazardous situations alone.</li>
-  </ul>
-</main>
-<footer>&copy; 2026 PutaiaoTech | All rights reserved</footer>
+
+<header>
+  <h1>PutaiaoTech Health & Safety – Incident Reporting</h1>
+</header>
+
+<div class="container">
+
+  <form>
+    <label for="incidentDate">Incident Date</label>
+    <input type="date" id="incidentDate" name="incidentDate" required>
+
+    <label for="incidentTime">Incident Time</label>
+    <input type="time" id="incidentTime" name="incidentTime" required>
+
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="Enter incident location" required>
+
+    <label for="reportedBy">Reported By</label>
+    <input type="text" id="reportedBy" name="reportedBy" placeholder="Enter your name" required>
+
+    <label for="incidentType">Incident Type</label>
+    <select id="incidentType" name="incidentType">
+      <option>Near Miss</option>
+      <option>Injury</option>
+      <option>Property Damage</option>
+      <option>Environmental</option>
+      <option>Other</option>
+    </select>
+
+    <label for="description">Incident Description</label>
+    <textarea id="description" name="description" rows="5" placeholder="Provide full details..." required></textarea>
+
+    <label for="actions">Immediate Actions Taken</label>
+    <textarea id="actions" name="actions" rows="4" placeholder="What actions were taken?"></textarea>
+
+    <button type="submit">Submit Incident Report</button>
+  </form>
+
+  <div class="back-link">
+    <a href="dashboard.html">← Back to Dashboard</a>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 PutaiaoTech | Managed & Marketed by Virtual Online Contact Centre
+</footer>
+
 </body>
 </html>
