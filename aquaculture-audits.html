@@ -15,8 +15,6 @@
   input[type="text"], input[type="date"] { width:100%; padding:8px; margin:5px 0 15px 0; border-radius:6px; border:1px solid #FFD700; background-color:#0D3B66; color:#FFD700; }
   .btn { display:inline-block; background-color:#FFD700; color:#0D3B66; padding:10px 20px; margin:8px 4px; border-radius:6px; font-weight:bold; cursor:pointer; text-decoration:none; }
   .btn:hover { background-color:#fff200; }
-  table { width:100%; border-collapse: collapse; margin-top:15px; }
-  th, td { border:1px solid #FFD700; padding:8px; text-align:left; }
 </style>
 </head>
 <body>
@@ -28,38 +26,35 @@
   <label for="hsofficer">Health & Safety Officer:</label>
   <input type="text" id="hsofficer" placeholder="Enter officer name">
 
-  <!-- COLLAPSIBLE LEGISLATION -->
-  <button type="button" class="collapsible">Food Act 2014 / HACCP Requirements</button>
+  <button type="button" class="collapsible">NZ Aquaculture Legislation & Standards</button>
   <div class="content">
-    <p>All seafood must meet storage, transport, and hygiene requirements under the Food Act 2014 and HACCP standards.</p>
+    <p>All farm operations must comply with NZ Aquaculture legislation, including seafood handling, storage, and delivery standards.</p>
     <textarea placeholder="Enter audit notes here..."></textarea>
   </div>
 
-  <button type="button" class="collapsible">Biohazard / Contamination Risks</button>
+  <button type="button" class="collapsible">Biohazard & Contamination Checks</button>
   <div class="content">
-    <p>Record algae blooms, E.coli contamination, or other biohazard events.</p>
+    <p>Check for algae blooms, E.coli, or other contamination affecting water and seafood quality.</p>
     <textarea placeholder="Enter audit notes here..."></textarea>
   </div>
 
-  <button type="button" class="collapsible">Equipment & PPE Compliance</button>
+  <button type="button" class="collapsible">Equipment, Nets & Tanks</button>
   <div class="content">
-    <p>Check all aquaculture equipment, safety gear, and personal protective equipment are compliant.</p>
+    <p>Ensure all aquaculture equipment, feeding systems, and storage tanks are clean and functional.</p>
     <textarea placeholder="Enter audit notes here..."></textarea>
   </div>
 
-  <button type="button" class="collapsible">Emergency Preparedness</button>
+  <button type="button" class="collapsible">Emergency Response & Spill Management</button>
   <div class="content">
-    <p>Ensure emergency procedures are in place, staff trained, and muster points known.</p>
+    <p>Verify procedures for contamination events, escapes, or spills.</p>
     <textarea placeholder="Enter audit notes here..."></textarea>
   </div>
 
   <button class="btn" id="saveBtn">Save Audit Locally</button>
   <button class="btn" id="exportBtn">Export Audit as CSV</button>
-
 </div>
 
 <script>
-// COLLAPSIBLE FUNCTIONALITY
 const collapsibles = document.querySelectorAll('.collapsible');
 collapsibles.forEach(c => {
   c.addEventListener('click', function() {
@@ -69,7 +64,6 @@ collapsibles.forEach(c => {
   });
 });
 
-// SAVE AUDIT TO LOCALSTORAGE
 document.getElementById('saveBtn').addEventListener('click', () => {
   const hso = document.getElementById('hsofficer').value;
   const sections = document.querySelectorAll('.content textarea');
@@ -82,17 +76,12 @@ document.getElementById('saveBtn').addEventListener('click', () => {
   alert('Audit saved locally!');
 });
 
-// EXPORT AUDIT TO CSV
 document.getElementById('exportBtn').addEventListener('click', () => {
   const audits = JSON.parse(localStorage.getItem('aquacultureAudits')) || [];
   if(audits.length === 0){ alert('No audit data to export!'); return; }
 
   let csv = 'Officer,Date,Section,Notes\n';
-  audits.forEach(a => {
-    a.data.forEach(d => {
-      csv += `"${a.officer}","${a.date}","${d.section}","${d.notes.replace(/"/g,'""')}"\n`;
-    });
-  });
+  audits.forEach(a => { a.data.forEach(d => { csv += `"${a.officer}","${a.date}","${d.section}","${d.notes.replace(/"/g,'""')}"\n`; }); });
 
   const blob = new Blob([csv], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
@@ -103,6 +92,5 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 </script>
-
 </body>
 </html>
