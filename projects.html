@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>H-Safety Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Projects</title>
+<style>
+  body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
+  h1, h2 { text-align:center; color:#FFD700; }
+  ul { padding-left:20px; }
+  li { margin-bottom:12px; }
+  .project-panel { background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; padding:20px; margin-bottom:20px; }
+  .btn { background-color:#FFD700; color:#0D3B66; padding:12px 20px; margin-top:10px; border-radius:8px; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; }
+  .btn:hover { background-color:#fff200; }
+</style>
 </head>
-
 <body>
 
-<h1>Health & Safety Projects</h1>
+<div class="container">
+  <h1>PutaiaoTech Health & Safety</h1>
+  <h2 id="project-title">Loading Project...</h2>
 
-<a href="dashboard.html">← Back to Dashboard</a>
+  <div id="project-panel" class="project-panel">
+    <h3>Audit Records</h3>
+    <ul id="audit-list">
+      <li>Loading audits...</li>
+    </ul>
 
-<h2>Create Project</h2>
-
-<input id="projectName" placeholder="Project name">
-
-<select id="industry">
-<option value="aquaculture">Aquaculture</option>
-<option value="water">Water Quality</option>
-<option value="climate">Climate</option>
-</select>
-
-<textarea id="notes" placeholder="Project notes"></textarea>
-
-<button onclick="saveProject()">Save Project</button>
-
-<h2>Saved Projects</h2>
-
-<ul id="projectList"></ul>
+    <button class="btn" id="exportBtn">Export Audits as CSV</button>
+  </div>
+</div>
 
 <script src="js/projects.js"></script>
-
 </body>
 </html>
-
