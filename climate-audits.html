@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Climate Audit</title>
+<style>
+  body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
+  h1,h2 { text-align:center; color:#FFD700; }
+  .collapsible { background-color:#FFD700; color:#0D3B66; cursor:pointer; padding:12px; width:100%; border:none; border-radius:6px; text-align:left; font-weight:bold; margin:8px 0; }
+  .active, .collapsible:hover { background-color:#fff200; }
+  .content { padding:0 18px; display:none; overflow:hidden; background-color:#104E8B; margin-bottom:15px; border:1px solid #FFD700; border-radius:8px; }
+  textarea { width:100%; min-height:60px; margin:10px 0; border-radius:6px; border:1px solid #FFD700; background-color:#0D3B66; color:#FFD700; padding:8px; }
+  input[type="text"], input[type="date"] { width:100%; padding:8px; margin:5px 0 15px 0; border-radius:6px; border:1px solid #FFD700; background-color:#0D3B66; color:#FFD700; }
+  .btn { display:inline-block; background-color:#FFD700; color:#0D3B66; padding:10px 20px; margin:8px 4px; border-radius:6px; font-weight:bold; cursor:pointer; text-decoration:none; }
+  .btn:hover { background-color:#fff200; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>PutaiaoTech Health & Safety</h1>
+  <h2>Climate Site Audit</h2>
+
+  <label for="hsofficer">Health & Safety Officer:</label>
+  <input type="text" id="hsofficer" placeholder="Enter officer name">
+
+  <button type="button" class="collapsible">Climate Regulations / NZ Policy</button>
+  <div class="content">
+    <p>Ensure compliance with NZ climate and environmental protection policies.</p>
+    <textarea placeholder="Enter audit notes here..."></textarea>
+  </div>
+
+  <button type="button" class="collapsible">Risk Assessment – Weather / Natural Events</button>
+  <div class="content">
+    <p>Record potential impacts from extreme weather, floods, or other natural hazards.</p>
+    <textarea placeholder="Enter audit notes here..."></textarea>
+  </div>
+
+  <button type="button" class="collapsible">Equipment & Monitoring</button>
+  <div class="content">
+    <p>Check all climate monitoring devices, sensors, and safety equipment.</p>
+    <textarea placeholder="Enter audit notes here..."></textarea>
+  </div>
+
+  <button type="button" class="collapsible">Emergency Preparedness</button>
+  <div class="content">
+    <p>Verify procedures for staff safety during extreme climate events.</p>
+    <textarea placeholder="Enter audit notes here..."></textarea>
+  </div>
+
+  <button class="btn" id="saveBtn">Save Audit Locally</button>
+  <button class="btn" id="exportBtn">Export Audit as CSV</button>
+</div>
+
+<script>
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach(c => {
+  c.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.style.display = (content.style.display === "block") ? "none" : "block";
+  });
+});
+
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const hso = document.getElementById('hsofficer').value;
+  const sections = document.querySelectorAll('.content textarea');
+  const auditData = Array.from(sections).map((t,i) => ({ section: collapsibles[i].innerText, notes: t.value }));
+  const auditRecord = { officer: hso, date: new Date().toLocaleString(), data: auditData };
+
+  let audits = JSON.parse(localStorage.getItem('climateAudits')) || [];
+  audits.push(auditRecord);
+  localStorage.setItem('climateAudits', JSON.stringify(audits));
+  alert('Audit saved locally!');
+});
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const audits = JSON.parse(localStorage.getItem('climateAudits')) || [];
+  if(audits.length === 0){ alert('No audit data to export!'); return; }
+
+  let csv = 'Officer,Date,Section,Notes\n';
+  audits.forEach(a => { a.data.forEach(d => { csv += `"${a.officer}","${a.date}","${d.section}","${d.notes.replace(/"/g,'""')}"\n`; }); });
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `climate_audits_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
