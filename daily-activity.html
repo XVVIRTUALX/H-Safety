@@ -1,39 +1,24 @@
-<div class="container">
-  <h1>PutaiaoTech Health & Safety - Daily Checks</h1>
-
-  <form>
-    <h2>Daily Health & Safety Compliance</h2>
-    
-    <label><input type="checkbox"> PPE compliance verified</label><br>
-    <label><input type="checkbox"> Emergency exits unobstructed</label><br>
-    <label><input type="checkbox"> Equipment inspected and functional</label><br>
-    <label><input type="checkbox"> Hazardous substances stored safely</label><br>
-    <label><input type="checkbox"> Staff trained on emergency procedures</label><br>
-    <label><input type="checkbox"> Incident reporting procedures followed</label><br>
-    <label><input type="checkbox"> Corrective actions recorded</label><br>
-
-    <button type="button" class="btn" id="saveDailyChecks">Save Daily Checks</button>
-  </form>
-</div>
-
-<script>
-  document.getElementById('saveDailyChecks').addEventListener('click', () => {
-    const dailyChecks = document.querySelectorAll('input[type="checkbox"]');
-    const dailyData = [];
-    
-    dailyChecks.forEach((check, i) => {
-      dailyData.push({ 
-        check: check.parentNode.textContent.trim(),
-        status: check.checked ? 'Verified' : 'Not Verified'
-      });
-    });
-
-    // Save to localStorage
-    const currentDate = new Date().toLocaleDateString();
-    const savedDailyChecks = JSON.parse(localStorage.getItem('dailyChecks')) || [];
-    savedDailyChecks.push({ date: currentDate, checks: dailyData });
-
-    localStorage.setItem('dailyChecks', JSON.stringify(savedDailyChecks));
-    alert('Daily checks saved!');
-  });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Daily Activity</title>
+<style>
+  body {
+    background-color: #0D3B66;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+  h1, h2 { text-align: center; color: #FFD700; }
+  label { display: block; margin-bottom: 12px; font-weight:
