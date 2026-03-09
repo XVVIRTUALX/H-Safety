@@ -20,17 +20,180 @@
 <div class="container">
   <h1>PutaiaoTech Health & Safety</h1>
   <h2 id="project-title">Loading Project...</h2>
+#project-list {
+    max-width: 900px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.project-card {
+    background-color: #fff;
+    border: 2px solid #0D3B66;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+.project-card.active {
+    border: 3px solid #FFD700; /* gold for active */
+    background-color: #e0ffe0;  /* light green */
+    font-weight: bold;
+}
+.project-card h3 {
+    margin: 0 0 0.5rem 0;
+}
+.tabs {
+    display: none;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.tabs button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #0D3B66;
+    color: #FFD700;
+    cursor: pointer;
+}
+.tabs button:hover {
+    background-color: #104E8B;
+}
+</style>
+</head>
+<body>
 
-  <div id="project-panel" class="project-panel">
-    <h3>Audit Records</h3>
-    <ul id="audit-list">
-      <li>Loading audits...</li>
-    </ul>
+<h1 style="text-align:center; margin-top:2rem;">H&S Dashboard</h1>
 
-    <button class="btn" id="exportBtn">Export Audits as CSV</button>
+<div id="project-list">
+
+  <!-- Each project card -->
+  <div class="project-card" data-industry="aquaculture">
+    <h3>Aquaculture H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
   </div>
+
+  <div class="project-card" data-industry="waterquality">
+    <h3>Water Quality H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
+  <div class="project-card" data-industry="climate">
+    <h3>Climate-Resilience-Sustainability-Services H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
+  <div class="project-card" data-industry="farming">
+    <h3>Farming H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
+  <div class="project-card" data-industry="construction">
+    <h3>Construction H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
+  <div class="project-card" data-industry="office">
+    <h3>Office H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
+  <div class="project-card" data-industry="laboratory">
+    <h3>Laboratory H&S</h3>
+    <p>Company: [Name]</p>
+    <p>Date: [Start]</p>
+    <p>Expiry: [Expiry]</p>
+    <p>H&S Officer: [Officer]</p>
+    <div class="tabs">
+        <button>Daily Checks</button>
+        <button>Contacts</button>
+        <button>Incidents</button>
+        <button>Training</button>
+        <button>Emergency</button>
+        <button>Annual Review</button>
+    </div>
+  </div>
+
 </div>
 
-<script src="js/projects.js"></script>
+<script>
+// Activate project after payment via query parameter
+const params = new URLSearchParams(window.location.search);
+const activeIndustry = params.get("industry"); // e.g., "aquaculture"
+
+if(activeIndustry){
+    const card = document.querySelector(`.project-card[data-industry="${activeIndustry}"]`);
+    const container = document.getElementById("project-list");
+    container.prepend(card);          // move to top
+    card.classList.add("active");      // mark as active
+    card.querySelector(".tabs").style.display = "flex"; // show tabs
+}
+</script>
+
 </body>
 </html>
+ 
