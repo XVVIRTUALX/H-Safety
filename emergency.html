@@ -3,112 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PutaiaoTech H&S - Emergency Log</title>
+<title>PutaiaoTech H&S – Emergency Audit</title>
 <style>
-  body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
-  .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
-  h1, h2 { text-align:center; color:#FFD700; }
-  label { display:block; margin:10px 0 5px; }
-  input, textarea, select { width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:none; }
-  button { background-color:#FFD700; color:#0D3B66; padding:12px 20px; border:none; font-weight:bold; cursor:pointer; border-radius:5px; transition:0.3s; }
-  button:hover { background-color:#fff200; }
-  table { width:100%; border-collapse:collapse; margin-top:20px; }
+  body { 
+    background-color:#0D3B66; 
+    color:#FFD700; 
+    font-family: Arial, sans-serif; 
+    margin:0; 
+    padding:20px;
+  }
+  .container { 
+    max-width:900px; 
+    margin:0 auto; 
+    padding:30px; 
+    background-color:#104E8B; 
+    border:2px solid #FFD700; 
+    border-radius:12px; 
+  }
+  h1, h2, h3 { text-align:center; color:#FFD700; }
+  label { display:block; margin-top:10px; font-weight:bold; }
+  input[type="text"], input[type="number"], input[type="time"], textarea {
+    width:100%; padding:8px; margin:5px 0 15px 0; border-radius:6px; border:1px solid #FFD700;
+    background-color:#0D3B66; color:#FFD700;
+  }
+  input[type="checkbox"] { margin-right:10px; }
+  .btn {
+    display:inline-block;
+    background-color: #FFD700;
+    color: #0D3B66;
+    padding: 12px 24px;
+    margin: 10px 5px 0 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn:hover { background-color: #fff200; }
+  table {
+    width:100%; border-collapse: collapse; margin-top:10px;
+  }
   th, td { border:1px solid #FFD700; padding:8px; text-align:left; }
+  ul { list-style:none; padding-left:0; }
+  li { margin-bottom:10px; }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>PutaiaoTech Health & Safety Assist</h1>
-  <h2>Emergency Log</h2>
+<h1>PutaiaoTech Health & Safety – Emergency Audit</h1>
 
-  <!-- Form to fill emergency -->
-  <label>Emergency Title / Type</label>
-  <input type="text" id="emergencyType" placeholder="e.g., Fire, Chemical Spill">
+<h2>Emergency Event Details</h2>
+<label>Emergency Type:</label>
+<input type="text" id="event-type" value="Fire">
 
-  <label>Staff on Site</label>
-  <textarea id="staffOnSite" placeholder="Enter names, roles"></textarea>
+<label>Zone:</label>
+<input type="text" id="zone" value="Zone 1">
 
-  <label>Actions Taken</label>
-  <textarea id="actionsTaken" placeholder="Evacuations, First Aid, Equipment Checks, Notifications"></textarea>
+<label>Start Time:</label>
+<input type="time" id="start-time" value="08:45">
 
-  <label>Time Reported</label>
-  <input type="datetime-local" id="timeReported">
+<label>Emergency Officer(s):</label>
+<input type="text" id="officers" value="John, Maria">
 
-  <label>Additional Notes</label>
-  <textarea id="notes" placeholder="Any other relevant information"></textarea>
+<h3>Audit Checklist</h3>
+<ul>
+  <li><input type="checkbox" id="evacuation"> Evacuation complete</li>
+  <li><input type="checkbox" id="first-aid"> First aid administered</li>
+  <li><input type="checkbox" id="equipment"> Equipment checked</li>
+  <li><input type="checkbox" id="hazardous"> Hazardous substances secured</li>
+</ul>
 
-  <button id="saveEntry">Save Entry</button>
-  <button id="downloadCSV">Download CSV for Audit</button>
+<label>Additional Notes:</label>
+<textarea id="notes" rows="4"></textarea>
 
-  <h2>Recorded Emergencies</h2>
-  <table id="emergencyTable">
-    <thead>
-      <tr>
-        <th>Emergency</th>
-        <th>Staff On Site</th>
-        <th>Actions Taken</th>
-        <th>Time Reported</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<h3>Muster Points</h3>
+<label>Zone 1 Staff Accounted:</label>
+<input type="number" id="zone1-staff" value="20">
+
+<label>Zone 2 Visitors Missing:</label>
+<input type="number" id="zone2-visitors" value="2">
+
+<h3>Export / Actions</h3>
+<a class="btn" onclick="exportEmergencyAudit()">Export Emergency Audit</a>
+<a class="btn" onclick="resetForm()">Reset Form</a>
+
 </div>
 
 <script>
-  let emergencyLog = JSON.parse(localStorage.getItem('emergencyLog')) || [];
-  const tableBody = document.querySelector('#emergencyTable tbody');
+// Export to CSV
+function exportEmergencyAudit() {
+    const data = [
+        ["Emergency Type", document.getElementById("event-type").value],
+        ["Zone", document.getElementById("zone").value],
+        ["Start Time", document.getElementById("start-time").value],
+        ["Emergency Officers", document.getElementById("officers").value],
+        ["Evacuation Complete", document.getElementById("evacuation").checked ? "Yes" : "No"],
+        ["First Aid Administered", document.getElementById("first-aid").checked ? "Yes" : "No"],
+        ["Equipment Checked", document.getElementById("equipment").checked ? "Yes" : "No"],
+        ["Hazardous Substances Secured", document.getElementById("hazardous").checked ? "Yes" : "No"],
+        ["Notes", document.getElementById("notes").value],
+        ["Zone 1 Staff Accounted", document.getElementById("zone1-staff").value],
+        ["Zone 2 Visitors Missing", document.getElementById("zone2-visitors").value]
+    ];
 
-  function renderTable() {
-    tableBody.innerHTML = '';
-    emergencyLog.forEach(entry => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${entry.emergencyType}</td>
-        <td>${entry.staffOnSite}</td>
-        <td>${entry.actionsTaken}</td>
-        <td>${entry.timeReported}</td>
-        <td>${entry.notes}</td>
-      `;
-      tableBody.appendChild(row);
-    });
-  }
+    let csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach(row => { csvContent += row.join(",") + "\r\n"; });
 
-  renderTable();
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Emergency_Audit.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
-  document.getElementById('saveEntry').addEventListener('click', () => {
-    const emergencyType = document.getElementById('emergencyType').value.trim();
-    const staffOnSite = document.getElementById('staffOnSite').value.trim();
-    const actionsTaken = document.getElementById('actionsTaken').value.trim();
-    const timeReported = document.getElementById('timeReported').value;
-    const notes = document.getElementById('notes').value.trim();
+    alert("Emergency Audit CSV exported!");
+}
 
-    if (!emergencyType || !staffOnSite || !actionsTaken || !timeReported) {
-      alert('Please fill all required fields.');
-      return;
-    }
-
-    emergencyLog.push({ emergencyType, staffOnSite, actionsTaken, timeReported, notes });
-    localStorage.setItem('emergencyLog', JSON.stringify(emergencyLog));
-    renderTable();
-  });
-
-  document.getElementById('downloadCSV').addEventListener('click', () => {
-    if (emergencyLog.length === 0) { alert('No entries to export.'); return; }
-    let csvContent = 'Emergency,Staff On Site,Actions Taken,Time Reported,Notes\n';
-    emergencyLog.forEach(e => {
-      csvContent += `"${e.emergencyType}","${e.staffOnSite}","${e.actionsTaken}","${e.timeReported}","${e.notes}"\n`;
-    });
-    const blob = new Blob([csvContent], { type:'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'emergency_log.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
+// Reset Form
+function resetForm() {
+    document.getElementById("event-type").value = "";
+    document.getElementById("zone").value = "";
+    document.getElementById("start-time").value = "";
+    document.getElementById("officers").value = "";
+    document.getElementById("evacuation").checked = false;
+    document.getElementById("first-aid").checked = false;
+    document.getElementById("equipment").checked = false;
+    document.getElementById("hazardous").checked = false;
+    document.getElementById("notes").value = "";
+    document.getElementById("zone1-staff").value = "";
+    document.getElementById("zone2-visitors").value = "";
+}
 </script>
 
 </body>
