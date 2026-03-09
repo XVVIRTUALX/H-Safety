@@ -88,21 +88,16 @@
 </head>
 
 <body>
-
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
 
   <!-- Trial / Payment Panel -->
   <div class="panel">
     <h2>Free 1-Month Trial / $275 Annual License</h2>
-
     <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-      <!-- Start Free Trial -->
       <a href="#" id="startTrialBtn" class="button">Start Free Trial</a>
-      <!-- Immediate Payment -->
       <a href="payment.html" class="button">Request Quote / Pay Now</a>
     </div>
-
     <p style="font-size:0.85em; margin-top:15px;">
       Free trial is automatically activated. Payment required after 30 days if continuing use.
     </p>
@@ -110,10 +105,7 @@
 
   <!-- Modules -->
   <div class="grid">
-    <!-- Industry Audit Module (dynamic) -->
-    <div id="industryAudit" class="module" style="display:none;"></div>
-
-    <!-- Other Modules -->
+    <div id="auditsModule" class="module">AUDITS</div>
     <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
     <div class="module" onclick="location.href='incidents.html'">INCIDENTS</div>
     <div class="module" onclick="location.href='training.html'">TRAINING</div>
@@ -129,47 +121,36 @@
 </div>
 
 <script>
-  // Start Trial button
+  // Trial Button Logic
   document.getElementById('startTrialBtn').addEventListener('click', function() {
     let trialStart = localStorage.getItem('HS_TrialStart');
     if (trialStart) {
         alert("Free Trial already active.");
-        window.location.reload();
+        window.location.href = "audits.html";
         return;
     }
     let userName = prompt("Enter your name to start the free trial:");
     if (!userName) { alert("Name is required to start the trial."); return; }
     localStorage.setItem('HS_TrialStart', new Date().toISOString());
     localStorage.setItem('HS_TrialUser', userName);
-
-    // Example: set default licensed industry during trial (e.g., Aquaculture)
-    localStorage.setItem('HS_LicensedIndustry', 'aquaculture');
-
     alert("Free Trial started for " + userName + "!");
-    window.location.reload();
+    window.location.href = "audits.html";
   });
 
-  // Display the licensed industry audit module
-  let licensedIndustry = localStorage.getItem('HS_LicensedIndustry');
-  const industryMap = {
-    "aquaculture": ["Aquaculture Audit", "audits/aquaculture-audits.html"],
-    "water-quality": ["Water Quality Audit", "audits/water-quality-audits.html"],
-    "climate": ["Climate Audit", "audits/climate-audits.html"]
-  };
+  // Single-industry audits module logic
+  const industry = localStorage.getItem('HS_LicensedIndustry');
+  const auditsModule = document.getElementById('auditsModule');
 
-  if (licensedIndustry && industryMap[licensedIndustry]) {
-    let auditModule = document.getElementById('industryAudit');
-    auditModule.innerText = industryMap[licensedIndustry][0];
-    auditModule.onclick = function() {
-      window.location.href = industryMap[licensedIndustry][1];
-    };
-    auditModule.style.display = "block";
+  if(industry === 'aquaculture') {
+      auditsModule.onclick = () => location.href = 'audits/aquaculture-audits.html';
+  } else if(industry === 'water-quality') {
+      auditsModule.onclick = () => location.href = 'audits/water-quality-audits.html';
+  } else if(industry === 'climate') {
+      auditsModule.onclick = () => location.href = 'audits/climate-audits.html';
   } else {
-    // Default generic audits page
-    let auditModule = document.getElementById('industryAudit');
-    auditModule.innerText = "AUDITS";
-    auditModule.onclick = function() { window.location.href = "audits.html"; };
-    auditModule.style.display = "block";
+      auditsModule.onclick = () => alert("You have not purchased an industry license yet.");
+      auditsModule.style.opacity = 0.6;
+      auditsModule.style.cursor = 'not-allowed';
   }
 </script>
 
