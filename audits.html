@@ -8,128 +8,132 @@
   body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
   .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
   h1, h2 { text-align:center; color:#FFD700; }
-  ul { list-style:none; padding-left:0; }
-  li { margin-bottom:15px; }
-  input[type="text"], input[type="date"] { padding:8px; border-radius
-
-  .panel {
-    background-color: #104E8B;
-    border: 2px solid #FFD700;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .btn {
-    display: inline-block;
-    background-color: #FFD700;
-    color: #0D3B66;
-    padding: 12px 24px;
-    margin: 5px 0;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+  .panel { background-color: #104E8B; border: 2px solid #FFD700; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .btn { display: inline-block; background-color: #FFD700; color: #0D3B66; padding: 12px 24px; margin: 5px 0; border-radius: 8px; font-weight: bold; text-decoration: none; cursor: pointer; transition: 0.3s; }
   .btn:hover { background-color: #fff200; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  th, td {
-    border: 1px solid #FFD700;
-    padding: 8px;
-    text-align: left;
-  }
-
-  ul {
-    padding-left: 20px;
-  }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid #FFD700; padding: 8px; text-align: left; }
+  input[type='text'], input[type='number'], input[type='date'] { width: 95%; padding:5px; border-radius:4px; border:1px solid #FFD700; background-color:#0D3B66; color:#FFD700; }
+  label { margin-right:10px; }
 </style>
 </head>
 <body>
 
+<div class="container">
 <h1>PutaiaoTech Health & Safety Assist</h1>
 
-<!-- SHIFT SUMMARY -->
+<!-- Audit Checklist -->
 <div class="panel">
-  <h2>Shift Summary</h2>
-  <p>Staff On-Site: 12</p>
-  <p>Visitors: 3</p>
-
-  <h2>Quick Actions</h2>
-  <a class="btn" onclick="alert('Log Emergency clicked')">Log Emergency</a>
-  <a class="btn" onclick="alert('Conduct Audit clicked')">Conduct Audit</a>
-  <a class="btn" onclick="alert('Check Equipment clicked')">Check Equipment</a>
-  <a class="btn" onclick="alert('Visitor Log clicked')">Visitor Log</a>
-  <a class="btn" onclick="alert('Training Verification clicked')">Training Verification</a>
-  <a class="btn" onclick="alert('End-of-Day Report clicked')">End-of-Day Report</a>
-</div>
-
-<!-- ALERTS -->
-<div class="panel">
-  <h2>Alerts / Notifications</h2>
-  <p style="background-color:#D32F2F; color:#fff; padding:5px 10px; border-radius:5px;">1 Critical Incident</p>
-  <p style="background-color:#FFA000; color:#fff; padding:5px 10px; border-radius:5px;">2 Pending Trainings</p>
-  <p style="background-color:#388E3C; color:#fff; padding:5px 10px; border-radius:5px;">All Other Checks OK</p>
-</div>
-
-<!-- EMERGENCY MODULE -->
-<div class="panel">
-  <h2>Emergency Event – Fire – Zone 1</h2>
-  <p>Start Time: 08:45 | Emergency Officer(s): John, Maria</p>
-
-  <h3>Audit Checklist</h3>
-  <ul>
-    <li>✔ Evacuation complete</li>
-    <li>✔ First aid administered</li>
-    <li>✔ Equipment checked</li>
-    <li>⚠ Hazardous substances secured</li>
-    <li>✔ Supervisors notified</li>
-    <li>Notes: ___________________________</li>
+  <h2>Emergency Event Audit – Zone 1</h2>
+  <ul id="audit-checklist">
+    <li><label><input type="checkbox" value="Evacuation complete"> Evacuation complete</label></li>
+    <li><label><input type="checkbox" value="First aid administered"> First aid administered</label></li>
+    <li><label><input type="checkbox" value="Equipment checked"> Equipment checked</label></li>
+    <li><label><input type="checkbox" value="Hazardous substances secured"> Hazardous substances secured</label></li>
+    <li><label><input type="checkbox" value="Supervisors notified"> Supervisors notified</label></li>
+    <li>Notes: <input type="text" id="audit-notes" placeholder="Enter notes here"></li>
   </ul>
-
-  <h3>Muster Points</h3>
-  <p>Zone 1 – 20 staff accounted ✅</p>
-  <p>Zone 2 – 2 visitors missing 🔴</p>
-
-  <a class="btn" onclick="alert('End Event')">End Event</a>
-  <a class="btn" onclick="alert('Save & Submit')">Save & Submit</a>
 </div>
 
-<!-- VISITOR LOG -->
+<!-- Visitor Log -->
 <div class="panel">
   <h2>Visitor Log</h2>
-  <table>
+  <table id="visitor-table">
     <tr><th>Name</th><th>Company</th><th>Time In</th><th>Time Out</th><th>Visiting</th></tr>
-    <tr><td>Tom Lee</td><td>Acme Ltd</td><td>08:05</td><td>10:30</td><td>Zone 2</td></tr>
-    <tr><td>Maria Kim</td><td>Enviro NZ</td><td>09:00</td><td>12:15</td><td>Zone 1</td></tr>
   </table>
-  <a class="btn" onclick="alert('Add Visitor')">Add Visitor</a>
+  <input type="text" id="visitor-name" placeholder="Name">
+  <input type="text" id="visitor-company" placeholder="Company">
+  <input type="text" id="visitor-timein" placeholder="Time In">
+  <input type="text" id="visitor-timeout" placeholder="Time Out">
+  <input type="text" id="visitor-zone" placeholder="Visiting Zone">
+  <button class="btn" onclick="addVisitor()">Add Visitor</button>
 </div>
 
-<!-- AUDITS / INCIDENTS -->
+<!-- Audits / Incidents -->
 <div class="panel">
   <h2>Audits / Incident Reports</h2>
-  <table>
+  <table id="audit-table">
     <tr><th>Type</th><th>Date</th><th>Staff Involved</th><th>Status</th><th>Notes</th></tr>
-    <tr><td>Accident</td><td>18/02/2026</td><td>John Doe</td><td>Pending ⚠️</td><td>Chemical spill near Lab 2</td></tr>
-    <tr><td>Audit</td><td>18/02/2026</td><td>Jane Smith</td><td>Complete ✅</td><td>PPE compliance check</td></tr>
   </table>
-  <a class="btn" onclick="alert('Start New Audit')">Start New Audit</a>
-  <a class="btn" onclick="alert('Export PDF')">Export PDF</a>
+  <input type="text" id="audit-type" placeholder="Type (Audit/Incident)">
+  <input type="date" id="audit-date">
+  <input type="text" id="audit-staff" placeholder="Staff Involved">
+  <input type="text" id="audit-status" placeholder="Status">
+  <input type="text" id="audit-notes-entry" placeholder="Notes">
+  <button class="btn" onclick="addAudit()">Add Audit/Incident</button>
 </div>
 
-<!-- END OF DAY REPORT -->
-<div class="panel">
-  <h2>End-of-Day Report</h2>
-  <p>Summary of incidents, audits, and emergency events. Pending actions highlighted.</p>
-  <a class="btn" onclick="alert('Export PDF')">Export PDF</a>
-  <a class="btn" onclick="alert('Send to Supervisor')">Send to Supervisor</a>
+<!-- Download CSV -->
+<div class="panel" style="text-align:center;">
+  <button class="btn" onclick="downloadCSV()">Download CSV</button>
 </div>
+
+</div>
+
+<script>
+function addVisitor() {
+  const table = document.getElementById('visitor-table');
+  const row = table.insertRow();
+  row.insertCell(0).innerText = document.getElementById('visitor-name').value;
+  row.insertCell(1).innerText = document.getElementById('visitor-company').value;
+  row.insertCell(2).innerText = document.getElementById('visitor-timein').value;
+  row.insertCell(3).innerText = document.getElementById('visitor-timeout').value;
+  row.insertCell(4).innerText = document.getElementById('visitor-zone').value;
+  // Clear inputs
+  ['visitor-name','visitor-company','visitor-timein','visitor-timeout','visitor-zone'].forEach(id => document.getElementById(id).value='');
+}
+
+function addAudit() {
+  const table = document.getElementById('audit-table');
+  const row = table.insertRow();
+  row.insertCell(0).innerText = document.getElementById('audit-type').value;
+  row.insertCell(1).innerText = document.getElementById('audit-date').value;
+  row.insertCell(2).innerText = document.getElementById('audit-staff').value;
+  row.insertCell(3).innerText = document.getElementById('audit-status').value;
+  row.insertCell(4).innerText = document.getElementById('audit-notes-entry').value;
+  ['audit-type','audit-date','audit-staff','audit-status','audit-notes-entry'].forEach(id => document.getElementById(id).value='');
+}
+
+function downloadCSV() {
+  let csv = 'Section,Field,Value\n';
+
+  // Audit Checklist
+  document.querySelectorAll('#audit-checklist li').forEach((li, i) => {
+    const cb = li.querySelector('input[type=checkbox]');
+    const textInput = li.querySelector('input[type=text]');
+    if(cb) csv += `Audit Checklist,${cb.value},${cb.checked ? 'Yes' : 'No'}\n`;
+    if(textInput) csv += `Audit Checklist,Notes,${textInput.value}\n`;
+  });
+
+  // Visitor Log
+  const visitorRows = document.querySelectorAll('#visitor-table tr');
+  visitorRows.forEach((tr,i) => {
+    if(i===0) return; // Skip header
+    const cells = tr.querySelectorAll('td');
+    csv += `Visitor Log,${cells[0].innerText},${cells[1].innerText},${cells[2].innerText},${cells[3].innerText},${cells[4].innerText}\n`;
+  });
+
+  // Audits / Incidents
+  const auditRows = document.querySelectorAll('#audit-table tr');
+  auditRows.forEach((tr,i) => {
+    if(i===0) return;
+    const cells = tr.querySelectorAll('td');
+    csv += `Audits/Incidents,${cells[0].innerText},${cells[1].innerText},${cells[2].innerText},${cells[3].innerText},${cells[4].innerText}\n`;
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'H&S_Audit.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 
 </body>
 </html>
+
+ 
