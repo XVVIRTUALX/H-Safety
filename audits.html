@@ -75,11 +75,16 @@
 </div>
 
 <script>
+  const devMode = true; // change to false when site goes live
   const auditsContainer = document.getElementById('auditsContainer');
   const noLicenseNote = document.getElementById('noLicenseNote');
 
   // Check the licensed industry
   const industry = localStorage.getItem('HS_LicensedIndustry');
+
+if(!industry && !devMode){
+    document.body.innerHTML = `
+    <h2 style="text-align:center
 
   if(industry === 'aquaculture') {
     const link = document.createElement('a');
