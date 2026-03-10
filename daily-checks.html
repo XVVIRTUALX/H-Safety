@@ -98,8 +98,39 @@
   displayDailyChecks(industry);
 
   // Save button functionality
-  document.getElementById('saveBtn').addEventListener('click', function () {
-    alert('Daily Check saved!');
+document.getElementById('saveBtn').addEventListener('click', function () {
+
+  const checks = document.querySelectorAll('#daily-checks-list label');
+  const textareas = document.querySelectorAll('.report-textarea');
+
+  const results = [];
+
+  checks.forEach((label, i) => {
+
+    const checkbox = label.querySelector("input");
+
+    results.push({
+      check: label.textContent.trim(),
+      completed: checkbox.checked,
+      notes: textareas[i].value
+    });
+
+  });
+
+  const record = {
+    project: project,
+    industry: industry,
+    date: new Date().toLocaleString(),
+    results: results
+  };
+
+  let records = JSON.parse(localStorage.getItem("dailyChecks")) || [];
+  records.push(record);
+
+  localStorage.setItem("dailyChecks", JSON.stringify(records));
+
+  alert("Daily Check saved!");
+});
     // You can add functionality to save the data to localStorage or send it to a backend
   });
 </script>
