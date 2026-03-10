@@ -1,74 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PutaiaoTech H&S – Daily Checks</title>
-  <style>
-    body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
-    h1, h2 { text-align:center; color:#FFD700; }
-    label { display: block; margin-bottom: 10px; }
-    input[type="checkbox"] { margin-right: 10px; }
-    .report-textarea { width: 100%; height: 100px; margin-top: 20px; padding: 10px; background-color: #0D3B66; color: #FFD700; border: 1px solid #FFD700; border-radius: 8px; }
-    .btn { background-color: #FFD700; color: #0D3B66; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-    .btn:hover { background-color: #fff200; }
-  </style>
-</head>
-<body>
-
+<!-- daily-checks.html -->
 <div class="container">
   <h1>Daily Checks</h1>
   <h2 id="industry-name">Loading Industry...</h2>
+  <h3 id="project-name">Loading Project...</h3>
 
   <!-- Daily Checks for the specific Industry -->
-  <div id="daily-checks-list">
-    <!-- The checks will be dynamically added here based on industry -->
-  </div>
+  <div id="daily-checks-list"></div>
 
   <button class="btn" id="saveBtn">Save Daily Check</button>
 </div>
 
 <script>
-  // Fetch the query parameter to get the industry
-  const params = new URLSearchParams(window.location.search);
-  const industry = params.get('industry'); // e.g., aquaculture
+  // Retrieve industry and project from localStorage
+  const industry = localStorage.getItem('selectedIndustry');
+  const project = localStorage.getItem('projectName');
 
-  // Display the industry name
+  // Display the industry and project name
   document.getElementById("industry-name").innerText = industry.charAt(0).toUpperCase() + industry.slice(1) + " Daily Checks";
+  document.getElementById("project-name").innerText = "Project: " + project;
 
-  // Fetch industry data from JSON file
+  // Fetch and display the daily checks for the selected industry
   const industryChecks = {
-    aquaculture: [
-      "PPE compliance verified",
-      "Emergency exits unobstructed",
-      "Equipment inspected and functional",
-      "Hazardous substances stored safely",
-      "Staff trained on emergency procedures",
-      "Incident reporting procedures followed",
-      "Corrective actions recorded"
-    ],
-    waterquality: [
-      "Water sample tests completed",
-      "pH levels within range",
-      "Microbial contamination checks",
-      "Chemical contamination tests",
-      "Emergency spill kits available and ready",
-      "Water systems inspected for faults",
-      "Disposal procedures followed"
-    ],
-    climate: [
-      "Energy consumption monitored",
-      "Sustainability goals tracked",
-      "Carbon emissions recorded",
-      "Environmental compliance confirmed",
-      "Emergency procedures for climate events reviewed",
-      "Staff informed of environmental hazards",
-      "Training on sustainability procedures completed"
-    ]
+    aquaculture: ["PPE compliance verified", "Emergency exits unobstructed", "Equipment inspected"],
+    waterquality: ["Water sample tests completed", "pH levels within range", "Chemical contamination tests"],
+    climate: ["Energy consumption monitored", "Sustainability goals tracked", "Carbon emissions recorded"]
   };
 
-  // Function to display checkboxes and text areas for the selected industry
   function displayDailyChecks(industry) {
     const checksContainer = document.getElementById('daily-checks-list');
     const checks = industryChecks[industry];
@@ -96,39 +53,4 @@
 
   // Call the function to display the daily checks
   displayDailyChecks(industry);
-
-  // Save button functionality
-  document.getElementById('saveBtn').addEventListener('click', function () {
-    const checks = document.querySelectorAll('#daily-checks-list label');
-    const textareas = document.querySelectorAll('.report-textarea');
-
-    const results = [];
-
-    checks.forEach((label, i) => {
-      const checkbox = label.querySelector("input");
-
-      results.push({
-        check: label.textContent.trim(),
-        completed: checkbox.checked,
-        notes: textareas[i].value
-      });
-    });
-
-    const record = {
-      project: params.get('project'), // Add project name to the record
-      industry: industry,
-      date: new Date().toLocaleString(),
-      results: results
-    };
-
-    let records = JSON.parse(localStorage.getItem("dailyChecks")) || [];
-    records.push(record);
-
-    localStorage.setItem("dailyChecks", JSON.stringify(records));
-
-    alert("Daily Check saved!");
-  });
 </script>
-
-</body>
-</html>
