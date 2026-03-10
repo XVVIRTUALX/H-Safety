@@ -4,19 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PutaiaoTech H&S Dashboard</title>
-
   <style>
-    body {
-      background-color: #0D3B66;
-      color: #FFD700;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+    body { background-color: #0D3B66; color: #FFD700; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: 50px auto; padding: 30px; background-color: #104E8B; border: 2px solid #FFD700; border-radius: 12px; }
+    h1 { text-align: center; color: #FFD700; }
+    .grid { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+    .module { background-color: #FFD700; color: #0D3B66; padding: 25px; border-radius: 8px; text-align: center; font-weight: bold; cursor: pointer; font-size: 1.2em; transition: 0.3s; }
+    .module:hover { background-color: #fff200; }
+    .feedback-btn { background-color: #FFD700; color: #0D3B66; font-weight: bold; padding: 12px 20px; border-radius: 8px; cursor: pointer; text-align: center; font-size: 1.2em; margin-top: 20px; }
+  </style>
+</head>
+<body>
 
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 30px;
-      background-color: #104E8B;
-      border: 2px solid #
+<div class="container">
+  <h1>PutaiaoTech Health & Safety Dashboard</h1>
+  
+  <!-- Modules (e.g., Daily Checks, Projects) -->
+  <div class="grid">
+    <div class="module" onclick="location.href='projects.html'">PROJECTS</div>
+    <div class="module" onclick="location.href='daily-checks.html'">DAILY CHECKS</div>
+    <div class="module" onclick="location.href='audits.html'">AUDITS</div>
+    <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
+    <!-- More modules -->
+  </div>
+
+  <!-- Feedback Button -->
+  <button class="feedback-btn" onclick="openFeedbackForm()">Provide Feedback</button>
+
+  <!-- Feedback Form (Initially Hidden) -->
+  <div id="feedbackForm" style="display:none; margin-top: 20px;">
+    <h2 style="text-align:center;">Your Feedback</h2>
+    <textarea id="feedbackText" placeholder="Share your thoughts..." rows="6" style="width:100%; border-radius:6px; padding:10px;"></textarea>
+    <br><br>
+    <button class="feedback-btn" onclick="submitFeedback()">Submit Feedback</button>
+  </div>
+</div>
+
+<script>
+  // Open Feedback Form
+  function openFeedbackForm() {
+    document.getElementById("feedbackForm").style.display = "block";
+  }
+
+  // Submit Feedback (Save to localStorage or Backend)
+  function submitFeedback() {
+    const feedback = document.getElementById("feedbackText").value;
+    if (feedback) {
+      // Save feedback (you can save it in localStorage or send it to a backend system)
+      localStorage.setItem('userFeedback', feedback);
+      alert('Thank you for your feedback!');
+      document.getElementById("feedbackForm").style.display = "none"; // Close form
+    } else {
+      alert('Please enter some feedback before submitting.');
+    }
+  }
+</script>
+
+</body>
+</html>
