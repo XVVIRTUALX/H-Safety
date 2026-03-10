@@ -37,7 +37,7 @@
   // Display the industry name
   document.getElementById("industry-name").innerText = industry.charAt(0).toUpperCase() + industry.slice(1) + " Daily Checks";
 
-  // Define the daily checks for each industry
+  // Fetch industry data from JSON file
   const industryChecks = {
     aquaculture: [
       "PPE compliance verified",
@@ -98,40 +98,35 @@
   displayDailyChecks(industry);
 
   // Save button functionality
-document.getElementById('saveBtn').addEventListener('click', function () {
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    const checks = document.querySelectorAll('#daily-checks-list label');
+    const textareas = document.querySelectorAll('.report-textarea');
 
-  const checks = document.querySelectorAll('#daily-checks-list label');
-  const textareas = document.querySelectorAll('.report-textarea');
+    const results = [];
 
-  const results = [];
+    checks.forEach((label, i) => {
+      const checkbox = label.querySelector("input");
 
-  checks.forEach((label, i) => {
-
-    const checkbox = label.querySelector("input");
-
-    results.push({
-      check: label.textContent.trim(),
-      completed: checkbox.checked,
-      notes: textareas[i].value
+      results.push({
+        check: label.textContent.trim(),
+        completed: checkbox.checked,
+        notes: textareas[i].value
+      });
     });
 
-  });
+    const record = {
+      project: params.get('project'), // Add project name to the record
+      industry: industry,
+      date: new Date().toLocaleString(),
+      results: results
+    };
 
-  const record = {
-    project: project,
-    industry: industry,
-    date: new Date().toLocaleString(),
-    results: results
-  };
+    let records = JSON.parse(localStorage.getItem("dailyChecks")) || [];
+    records.push(record);
 
-  let records = JSON.parse(localStorage.getItem("dailyChecks")) || [];
-  records.push(record);
+    localStorage.setItem("dailyChecks", JSON.stringify(records));
 
-  localStorage.setItem("dailyChecks", JSON.stringify(records));
-
-  alert("Daily Check saved!");
-});
-    // You can add functionality to save the data to localStorage or send it to a backend
+    alert("Daily Check saved!");
   });
 </script>
 
