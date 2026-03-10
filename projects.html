@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PutaiaoTech H&S – Projects</title>
+  <style>
+    body { background-color:#0D3B66; color:#FFD700; font-family: Arial, sans-serif; margin:0; padding:0; }
+    .container { max-width:900px; margin:50px auto; padding:30px; background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; }
+    h1, h2 { text-align:center; color:#FFD700; }
+    ul { padding-left:20px; }
+    li { margin-bottom:12px; }
+    .project-panel { background-color:#104E8B; border:2px solid #FFD700; border-radius:12px; padding:20px; margin-bottom:20px; }
+    .btn { background-color:#FFD700; color:#0D3B66; padding:12px 20px; margin-top:10px; border-radius:8px; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; }
+    .btn:hover { background-color:#fff200; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>PutaiaoTech Health & Safety</h1>
+  <h2>Create Project</h2>
+
+  <label>Select Industry:</label>
+  <select id="industrySelect">
+    <option value="aquaculture">Aquaculture</option>
+    <option value="waterquality">Water Quality</option>
+    <option value="climate">Climate</option>
+    <option value="farming">Farming</option>
+    <option value="construction">Construction</option>
+    <option value="office">Office</option>
+    <option value="laboratory">Laboratory</option>
+  </select>
+
+  <label>Project Name:</label>
+  <input type="text" id="projectName" placeholder="Enter project name" required>
+
+  <button type="button" id="saveProjectBtn" class="btn">Save Project</button>
+</div>
+
+<script>
+  document.getElementById('saveProjectBtn').addEventListener('click', function () {
+    const selectedIndustry = document.getElementById('industrySelect').value;
+    const projectName = document.getElementById('projectName').value;
+
+    // Validate if project name is entered
+    if (!projectName) {
+      alert("Please enter a project name.");
+      return;
+    }
+
+    // Save industry and project to localStorage
+    localStorage.setItem('selectedIndustry', selectedIndustry);
+    localStorage.setItem('projectName', projectName);
+
+    // Redirect to Dashboard
+    alert('Project created!');
+    window.location.href = 'dashboard.html'; // Redirect to Dashboard
+  });
+</script>
+
+</body>
+</html>
