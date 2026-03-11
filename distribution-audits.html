@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PutaiaoTech H&S – Manufacturing Audit</title>
+
+<style>
+body{background:#0D3B66;color:#FFD700;font-family:Arial;margin:0}
+.container{max-width:900px;margin:50px auto;padding:30px;background:#104E8B;border:2px solid #FFD700;border-radius:12px}
+h1,h2{text-align:center}
+.collapsible{background:#FFD700;color:#0D3B66;padding:12px;width:100%;border:none;border-radius:6px;text-align:left;font-weight:bold;margin:8px 0;cursor:pointer}
+.active,.collapsible:hover{background:#fff200}
+.content{display:none;padding:12px;border:1px solid #FFD700;border-radius:8px;margin-bottom:10px}
+textarea{width:100%;min-height:70px;background:#0D3B66;color:#FFD700;border:1px solid #FFD700;border-radius:6px;padding:8px}
+.btn{background:#FFD700;color:#0D3B66;padding:10px 20px;border:none;border-radius:6px;margin:10px 5px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>PutaiaoTech Health & Safety</h1>
+<h2>Manufacturing & Distribution Audit</h2>
+
+<button class="collapsible">Machinery Guards</button>
+<div class="content">
+<p>Production machinery properly guarded.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Forklift Operations</button>
+<div class="content">
+<p>Operators licensed and warehouse traffic systems implemented.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Manual Handling</button>
+<div class="content">
+<p>Workers trained for lifting and repetitive tasks.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Hazardous Substances</button>
+<div class="content">
+<p>Dangerous goods stored and labelled correctly.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Emergency Procedures</button>
+<div class="content">
+<p>Fire equipment and evacuation procedures maintained.</p>
+<textarea></textarea>
+</div>
+
+<button class="btn" onclick="exportCSV()">Export Audit CSV</button>
+
+</div>
+
+<script>
+const c=document.querySelectorAll('.collapsible');
+c.forEach(btn=>{
+btn.onclick=function(){
+this.classList.toggle("active");
+let content=this.nextElementSibling;
+content.style.display=content.style.display==="block"?"none":"block";
+}
+});
+
+function exportCSV(){
+let csv="Section,Notes\n";
+document.querySelectorAll(".content").forEach(section=>{
+let title=section.previousElementSibling.innerText;
+let notes=section.querySelector("textarea").value;
+csv+=`"${title}","${notes}"\n`;
+});
+
+let blob=new Blob([csv],{type:"text/csv"});
+let url=URL.createObjectURL(blob);
+
+let a=document.createElement("a");
+a.href=url;
+a.download="distribution_audit.csv";
+a.click();
+}
+</script>
+
+</body>
+</html>
