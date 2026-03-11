@@ -151,5 +151,28 @@ document.getElementById("auditScore").innerText=percent+"%";
 generateRating(percent);
 
 }
+  function generateRating(percent){
+
+let rating="";
+
+if(percent>=90){
+rating="Excellent Compliance";
+}
+
+else if(percent>=75){
+rating="Good Compliance";
+}
+
+else if(percent>=60){
+rating="Moderate Risk – Improvements Required";
+}
+
+else{
+rating="High Risk – Immediate Action Required";
+}
+
+document.getElementById("auditRating").innerText=rating;
+
+}
 </body>
 </html>
