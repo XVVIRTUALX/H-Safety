@@ -13,6 +13,26 @@
     .module:hover { background-color: #fff200; }
     .feedback-btn { background-color: #FFD700; color: #0D3B66; font-weight: bold; padding: 12px 20px; border-radius: 8px; cursor: pointer; text-align: center; font-size: 1.2em; margin-top: 20px; }
   </style>
+  <head>
+
+<script>
+
+let licensed = localStorage.getItem("HS_LicensedIndustry");
+
+if(!licensed){
+
+alert("No active license found.");
+
+window.location.href = "projects.html";
+
+}
+
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech Dashboard</title>
+
 </head>
 <body>
 
