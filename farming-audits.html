@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Farming Health & Safety Audit</title>
+<meta charset="UTF-8">
+<title>PutaiaoTech H&S – Farming Audit</title>
 
 <style>
-body{
-background:#0D3B66;
-color:#FFD700;
-font-family:Arial;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-padding:30px;
-background:#104E8B;
-border:2px solid #FFD700;
-border-radius:10px;
-}
-
-h1,h2{
-text-align:center;
-}
-
-.audit-section{
-margin-top:25px;
-}
-
-label{
-display:block;
-margin-top:10px;
-}
-
-textarea{
-width:100%;
-height:80px;
-margin-top:5px;
-}
+body{background:#0D3B66;color:#FFD700;font-family:Arial;margin:0}
+.container{max-width:900px;margin:50px auto;padding:30px;background:#104E8B;border:2px solid #FFD700;border-radius:12px}
+h1,h2{text-align:center}
+.collapsible{background:#FFD700;color:#0D3B66;padding:12px;width:100%;border:none;border-radius:6px;text-align:left;font-weight:bold;margin:8px 0;cursor:pointer}
+.active,.collapsible:hover{background:#fff200}
+.content{display:none;padding:12px;border:1px solid #FFD700;border-radius:8px;margin-bottom:10px}
+textarea{width:100%;min-height:70px;background:#0D3B66;color:#FFD700;border:1px solid #FFD700;border-radius:6px;padding:8px}
+input{width:100%;padding:8px;margin-bottom:10px;background:#0D3B66;color:#FFD700;border:1px solid #FFD700;border-radius:6px}
+.btn{background:#FFD700;color:#0D3B66;padding:10px 20px;border:none;border-radius:6px;margin:10px 5px;font-weight:bold;cursor:pointer}
 </style>
 </head>
 
@@ -44,12 +21,79 @@ margin-top:5px;
 
 <div class="container">
 
-<h1>Farming Health & Safety Audit</h1>
-<h2>Cattle & Poultry Operations</h2>
+<h1>PutaiaoTech Health & Safety</h1>
+<h2>Farming Audit – Cattle & Poultry</h2>
 
-<div class="audit-section">
+<input type="text" id="officer" placeholder="Health & Safety Officer">
 
-<h3>Animal Handling Safety</h3>
+<button class="collapsible">Animal Handling Safety</button>
+<div class="content">
+<p>Safe cattle handling yards, poultry handling procedures and worker training.</p>
+<textarea></textarea>
+</div>
 
-<label><input type="checkbox"> Safe cattle handling yards and gates</label>
-<label><input type="checkbox"> Training for livestock handling</label>
+<button class="collapsible">Machinery & Tractor Safety</button>
+<div class="content">
+<p>Guards fitted to moving machinery and tractors maintained.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Chemical & Fertiliser Storage</button>
+<div class="content">
+<p>Hazardous substances labelled and stored safely.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Biosecurity & Disease Control</button>
+<div class="content">
+<p>Procedures for livestock disease control and contamination prevention.</p>
+<textarea></textarea>
+</div>
+
+<button class="collapsible">Emergency Procedures</button>
+<div class="content">
+<p>Farm emergency plans, fire response and worker communication systems.</p>
+<textarea></textarea>
+</div>
+
+<button class="btn" id="saveBtn">Save Audit</button>
+<button class="btn" id="exportBtn">Export CSV</button>
+
+</div>
+
+<script>
+const c=document.querySelectorAll('.collapsible');
+c.forEach(btn=>{
+btn.onclick=function(){
+this.classList.toggle("active");
+let content=this.nextElementSibling;
+content.style.display=content.style.display==="block"?"none":"block";
+}
+});
+
+document.getElementById("saveBtn").onclick=function(){
+alert("Audit saved locally");
+}
+
+document.getElementById("exportBtn").onclick=function(){
+
+let csv="Section,Notes\n";
+document.querySelectorAll(".content").forEach(section=>{
+let title=section.previousElementSibling.innerText;
+let notes=section.querySelector("textarea").value;
+csv+=`"${title}","${notes}"\n`;
+});
+
+let blob=new Blob([csv],{type:"text/csv"});
+let url=URL.createObjectURL(blob);
+
+let a=document.createElement("a");
+a.href=url;
+a.download="farming_audit.csv";
+a.click();
+
+}
+</script>
+
+</body>
+</html>
