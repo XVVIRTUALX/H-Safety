@@ -51,8 +51,20 @@
     }
 
     // Save industry and project to localStorage
-    localStorage.setItem('selectedIndustry', selectedIndustry);
-    localStorage.setItem('projectName', projectName);
+function activateProject(){
+
+const industry = document.getElementById("industrySelect").value;
+
+if(!industry){
+alert("Please select an industry");
+return;
+}
+
+localStorage.setItem("HS_LicensedIndustry", industry);
+
+window.location.href = "audits.html";
+
+}
 
     // Redirect to Dashboard
     alert('Project created!');
