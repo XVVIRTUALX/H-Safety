@@ -57,16 +57,30 @@ alert("Please select an industry.");
 return;
 }
 
-/* SAVE DATA */
+/* SAVE PROJECT DATA */
 
-localStorage.setItem("HS_LicensedIndustry", industry);
+localStorage.setItem("HS_SelectedIndustry", industry);
 localStorage.setItem("HS_ProjectName", projectName);
 
-alert("Project created successfully");
+/* CHECK IF USER HAS ACTIVE LICENSE */
 
-/* GO TO AUDITS */
+let licensedIndustry = localStorage.getItem("HS_LicensedIndustry");
 
-window.location.href = "audits.html";
+if(licensedIndustry === industry){
+
+// user already paid for this industry
+alert("Project created. Loading dashboard.");
+
+window.location.href = "dashboard.html";
+
+}else{
+
+// user has not paid yet
+alert("Project created. Proceeding to payment.");
+
+window.location.href = "payment.html";
+
+}
 
 });
 
