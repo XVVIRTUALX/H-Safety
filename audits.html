@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Audits</title>
+
+<style>
+  body {
+    background-color: #0D3B66;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #104E8B;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #FFD700;
+  }
+
+  .audit-link {
+    display: block;
+    background-color: #FFD700;
+    color: #0D3B66;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    transition: 0.3s;
+  }
+
+  .audit-link:hover {
+    background-color: #fff200;
+  }
+
+  .note {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #FFD700;
+  }
+
+  .disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>PutaiaoTech Health & Safety – Audits</h1>
+
+  <div id="auditsContainer">
+    <!-- Industry audit links will be injected here -->
+  </div>
+
+  <p class="note" id="noLicenseNote" style="display:none;">
+    You do not have an active license for any industry audits. Please purchase access first.
+  </p>
+</div>
+
+<script>
+  const devMode = true; // change to false when site goes live
+  const auditsContainer = document.getElementById('auditsContainer');
+  const noLicenseNote = document.getElementById('noLicenseNote');
+
+  // Check the licensed industry
+  const industry = localStorage.getItem('HS_LicensedIndustry');
+
+if(!industry && !devMode){
+    document.body.innerHTML = `
+    <h2 style="text-align:center
+
+  if(industry === 'aquaculture') {
+    const link = document.createElement('a');
+    link.href = 'audits/aquaculture-audits.html';
+    link.textContent = 'Aquaculture Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+  } else if(industry === 'water-quality') {
+    const link = document.createElement('a');
+    link.href = 'audits/water-quality-audits.html';
+    link.textContent = 'Water Quality Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+  } else if(industry === 'climate') {
+    const link = document.createElement('a');
+    link.href = 'audits/climate-audits.html';
+    link.textContent = 'Climate Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+     } else if(industry === 'farming') {
+    const link = document.createElement('a');
+    link.href = 'audits/farming-audits.html';
+    link.textContent = 'Farming Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+     } else if(industry === 'manufacturing') {
+    const link = document.createElement('a');
+    link.href = 'audits/manufacturing-audits.html';
+    link.textContent = 'Manufacturing Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+     } else if(industry === 'construction') {
+    const link = document.createElement('a');
+    link.href = 'audits/construction-audits.html';
+    link.textContent = 'Construction Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+     } else if(industry === 'office') {
+    const link = document.createElement('a');
+    link.href = 'audits/office-audits.html';
+    link.textContent = 'Office Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+     } else if(industry === 'laboratory') {
+    const link = document.createElement('a');
+    link.href = 'audits/laboratory-audits.html';
+    link.textContent = 'Laboratory Audit';
+    link.className = 'audit-link';
+    auditsContainer.appendChild(link);
+
+  } else {
+    // No license
+    noLicenseNote.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
