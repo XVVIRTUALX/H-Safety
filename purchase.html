@@ -41,7 +41,37 @@ cursor:pointer;
 }
 </style>
 </head>
+<script>
 
+const validCodes = {
+aquaculture:"PT-AQUA-2026",
+construction:"PT-CONST-2026",
+farming:"PT-FARM-2026",
+distribution:"PT-DIST-2026",
+office:"PT-OFFICE-2026",
+laboratory:"PT-LAB-2026"
+};
+
+function activate(){
+
+let industry=document.getElementById("industry").value;
+let code=document.getElementById("code").value;
+
+if(code===validCodes[industry]){
+
+localStorage.setItem("industry_"+industry,"active");
+
+alert("Industry Activated!");
+
+}else{
+
+alert("Invalid Activation Code");
+
+}
+
+}
+
+</script>
 <body>
 
 <div class="container">
