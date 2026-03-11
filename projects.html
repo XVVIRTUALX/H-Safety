@@ -40,45 +40,35 @@
 </div>
 
 <script>
-  document.getElementById('saveProjectBtn').addEventListener('click', function () {
-    const selectedIndustry = document.getElementById('industrySelect').value;
-    const projectName = document.getElementById('projectName').value;
 
-    // Validate if project name is entered
-    if (!projectName) {
-      alert("Please enter a project name.");
-      return;
-    }
+document.getElementById('saveProjectBtn').addEventListener('click', function () {
 
-    // Save industry and project to localStorage
-function activateProject(){
+const industry = document.getElementById('industrySelect').value;
+const projectName = document.getElementById('projectName').value;
 
-const industry = document.getElementById("industrySelect").value;
-
-if(!industry){
-alert("Please select an industry");
+if(!projectName){
+alert("Please enter a project name.");
 return;
 }
 
+if(!industry){
+alert("Please select an industry.");
+return;
+}
+
+/* SAVE DATA */
+
 localStorage.setItem("HS_LicensedIndustry", industry);
+localStorage.setItem("HS_ProjectName", projectName);
+
+alert("Project created successfully");
+
+/* GO TO AUDITS */
 
 window.location.href = "audits.html";
 
-}
-
-    // Redirect to Dashboard
-    alert('Project created!');
-    window.location.href = 'dashboard.html'; // Redirect to Dashboard
-  });
-</script>
-<div id="footer"></div>
-
-<script>
-fetch("footer.html")
-.then(response => response.text())
-.then(data => {
-  document.getElementById("footer").innerHTML = data;
 });
+
 </script>
 </body>
 </html>
