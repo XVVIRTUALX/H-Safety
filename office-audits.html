@@ -130,6 +130,32 @@ a.click();
 
 }
 </script>
+function calculateAuditScore(){
 
+let scores=document.querySelectorAll(".score");
+
+let total=0;
+let max=0;
+
+scores.forEach(select=>{
+
+let value=parseInt(select.value);
+
+if(value>0){
+
+total+=value;
+max+=3;
+
+}
+
+});
+
+let percent=Math.round((total/max)*100);
+
+document.getElementById("auditScore").innerText=percent+"%";
+
+generateRating(percent);
+
+}
 </body>
 </html>
