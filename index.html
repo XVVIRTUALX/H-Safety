@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PutaiaoTech Demo</title>
-  <style>
-    body{font-family:Arial;text-align:center;padding:40px;background:#f2f2f2;}
-    .container{background:white;padding:30px;max-width:800px;margin:auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.15);}
-    button{display:block;width:70%;margin:20px auto;padding:18px;font-size:18px;border:none;border-radius:8px;background:#2c7be5;color:white;cursor:pointer;}
-    button:hover{background:#174a96;}
-    .footer-brand{margin-top:40px;font-size:14px;color:#555;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech Health & Safety Assist - Terms & Agreement</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-  <h1>PutaiaoTech Digital Workplace Demo</h1>
-  <p>Operational tools for workplace safety and job management.</p>
+  <h1>PutaiaoTech Health & Safety Assist</h1>
+  <h2>Terms & Agreement</h2>
 
-  <button onclick="window.location.href='projects.html'">Create / Select Project</button>
-  <button onclick="window.location.href='dashboard.html'">Open Dashboard (Demo)</button>
-  <button onclick="window.location.href='https://xvvirtualx.github.io/ODD-JOBS-NZ/'">ODD-JOBS Marketplace</button>
+  <p>By using this application, you acknowledge and agree that:</p>
+  <ul>
+    <li>You are familiar with the relevant <strong>NZ Health & Safety legislation</strong>.</li>
+    <li>You have completed all required <strong>training, inductions, and certifications</strong>.</li>
+    <li>This app is a <strong>compliance tool</strong> and <strong>does not provide training</strong>.</li>
+    <li>You are responsible for all H&S obligations while on site.</li>
+  </ul>
 
-  <div class="footer-brand">
-    <strong>PutaiaoTech</strong><br>
-    Platform services operated by VOCC – Virtual Online Contact Centre
-  </div>
+  <label>
+    <input type="checkbox" id="acknowledgeBox"> I confirm I understand the above compliance notice.
+  </label>
+  <button id="continueBtn" disabled>Continue</button>
 </div>
+
+<script>
+document.getElementById("acknowledgeBox").addEventListener("change", function() {
+    document.getElementById("continueBtn").disabled = !this.checked;
+});
+
+document.getElementById("continueBtn").addEventListener("click", function() {
+    window.location.href = "projects.html";
+});
+</script>
 </body>
 </html>
