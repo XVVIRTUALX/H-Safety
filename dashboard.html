@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - PutaiaoTech Demo</title>
+  <style>
+    body{font-family:Arial;background:#f2f2f2;padding:20px;}
+    .container{background:white;padding:30px;max-width:1000px;margin:auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.15);}
+    h1,h2{text-align:center;}
+    .dashboard-section{margin:30px 0;}
+    .dashboard-section button{margin:10px;padding:12px 20px;font-size:16px;background:#2c7be5;color:white;border:none;border-radius:6px;cursor:pointer;}
+    .dashboard-section button:hover{background:#174a96;}
+    .demo-banner{background:#ffeb3b;color:#333;padding:10px;margin-bottom:20px;border-radius:6px;}
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>PutaiaoTech Safety Dashboard</h1>
+  <div class="demo-banner">DEMO MODE – Sample data only. No information is saved.</div>
+
+  <div class="dashboard-section">
+    <h2>Daily Site Safety Check</h2>
+    <button onclick="alert('Daily safety check demo loaded')">Open Check</button>
+  </div>
+
+  <div class="dashboard-section">
+    <h2>Hazard Reporting</h2>
+    <button onclick="alert('Sample hazard report submitted')">Submit Hazard</button>
+  </div>
+
+  <div class="dashboard-section">
+    <h2>Reports & Monitoring</h2>
+    <button onclick="alert('Dashboard showing demo reports')">View Dashboard Reports</button>
+  </div>
+
+  <button onclick="window.location.href='index.html'" style="margin-top:40px;">End Demo & Return to Homepage</button>
+</div>
+</body>
+</html>
