@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Projects - PutaiaoTech Demo</title>
-  <style>
-    body{font-family:Arial;text-align:center;padding:40px;background:#f2f2f2;}
-    .container{background:white;padding:30px;max-width:800px;margin:auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.15);}
-    button{display:block;width:70%;margin:20px auto;padding:18px;font-size:18px;border:none;border-radius:8px;background:#2c7be5;color:white;cursor:pointer;}
-    button:hover{background:#174a96;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S – Projects</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-  <h1>Create / Select Project</h1>
-  <p>Demo mode: payment bypassed available</p>
+  <h1>PutaiaoTech Health & Safety</h1>
+  <h2>Create Project</h2>
 
   <label>Select Industry:</label>
   <select id="industrySelect">
-    <option value="demo">Demo Industry</option>
-    <option value="construction">Construction</option>
+    <option value="aquaculture">Aquaculture</option>
+    <option value="waterquality">Water Quality</option>
+    <option value="climate">Climate</option>
+    <option value="farming">Farming</option>
     <option value="manufacturing">Manufacturing</option>
+    <option value="construction">Construction</option>
+    <option value="distribution">Distribution</option>
+    <option value="office">Office</option>
+    <option value="laboratory">Laboratory</option>
   </select>
 
-  <button id="createProject">Create Project</button>
-  <button id="bypassDemo">Bypass for Demo</button>
+  <label>Project Name:</label>
+  <input type="text" id="projectName" placeholder="Enter project name" required>
 
-  <script>
-    document.getElementById("createProject").onclick = function() {
-      const industry = document.getElementById("industrySelect").value;
-      const licensedIndustry = localStorage.getItem("HS_LicensedIndustry");
-
-      if(licensedIndustry === industry){
-          alert("Project created. Loading dashboard.");
-          window.location.href = "dashboard.html";
-      } else {
-          alert("Project created. Proceeding to payment.");
-          window.location.href = "payment.html"; // real flow, not triggered in demo
-      }
-    };
-
-    document.getElementById("bypassDemo").onclick = function() {
-      alert("Demo mode activated. No project data will be saved.");
-      window.location.href = "dashboard.html";
-    };
-  </script>
+  <button type="button" id="saveProjectBtn" class="btn">Save Project & Open Dashboard</button>
 </div>
+
+<script>
+document.getElementById('saveProjectBtn').addEventListener('click', function () {
+    const industry = document.getElementById('industrySelect').value;
+    const projectName = document.getElementById('projectName').value;
+
+    if(!projectName){
+        alert("Please enter a project name.");
+        return;
+    }
+
+    // Save project info in localStorage (demo only)
+    localStorage.setItem("HS_SelectedIndustry", industry);
+    localStorage.setItem("HS_ProjectName", projectName);
+
+    // Redirect directly to dashboard
+    window.location.href = "dashboard.html";
+});
+</script>
 </body>
 </html>
