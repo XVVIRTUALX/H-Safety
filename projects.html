@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projects - PutaiaoTech Demo</title>
+  <style>
+    body{font-family:Arial;text-align:center;padding:40px;background:#f2f2f2;}
+    .container{background:white;padding:30px;max-width:800px;margin:auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.15);}
+    button{display:block;width:70%;margin:20px auto;padding:18px;font-size:18px;border:none;border-radius:8px;background:#2c7be5;color:white;cursor:pointer;}
+    button:hover{background:#174a96;}
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Create / Select Project</h1>
+  <p>Demo mode: payment bypassed available</p>
+
+  <label>Select Industry:</label>
+  <select id="industrySelect">
+    <option value="demo">Demo Industry</option>
+    <option value="construction">Construction</option>
+    <option value="manufacturing">Manufacturing</option>
+  </select>
+
+  <button id="createProject">Create Project</button>
+  <button id="bypassDemo">Bypass for Demo</button>
+
+  <script>
+    document.getElementById("createProject").onclick = function() {
+      const industry = document.getElementById("industrySelect").value;
+      const licensedIndustry = localStorage.getItem("HS_LicensedIndustry");
+
+      if(licensedIndustry === industry){
+          alert("Project created. Loading dashboard.");
+          window.location.href = "dashboard.html";
+      } else {
+          alert("Project created. Proceeding to payment.");
+          window.location.href = "payment.html"; // real flow, not triggered in demo
+      }
+    };
+
+    document.getElementById("bypassDemo").onclick = function() {
+      alert("Demo mode activated. No project data will be saved.");
+      window.location.href = "dashboard.html";
+    };
+  </script>
+</div>
+</body>
+</html>
