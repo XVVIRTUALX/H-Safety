@@ -1,38 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard - PutaiaoTech Demo</title>
-  <style>
-    body{font-family:Arial;background:#f2f2f2;padding:20px;}
-    .container{background:white;padding:30px;max-width:1000px;margin:auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.15);}
-    h1,h2{text-align:center;}
-    .dashboard-section{margin:30px 0;}
-    .dashboard-section button{margin:10px;padding:12px 20px;font-size:16px;background:#2c7be5;color:white;border:none;border-radius:6px;cursor:pointer;}
-    .dashboard-section button:hover{background:#174a96;}
-    .demo-banner{background:#ffeb3b;color:#333;padding:10px;margin-bottom:20px;border-radius:6px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PutaiaoTech H&S Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="container">
-  <h1>PutaiaoTech Safety Dashboard</h1>
-  <div class="demo-banner">DEMO MODE – Sample data only. No information is saved.</div>
+  <h1>PutaiaoTech Health & Safety Dashboard</h1>
 
-  <div class="dashboard-section">
-    <h2>Daily Site Safety Check</h2>
-    <button onclick="alert('Daily safety check demo loaded')">Open Check</button>
+  <p style="text-align:center; background-color:#FFD700; color:#0D3B66; padding:10px; font-weight:bold;">
+  DEMO MODE – Sample data only. No information will be saved.
+  </p>
+
+  <div class="grid">
+    <div class="module" onclick="location.href='projects.html'">PROJECTS</div>
+    <div class="module" onclick="location.href='daily-checks.html'">DAILY CHECKS</div>
+    <div class="module" onclick="location.href='incidents.html'">INCIDENTS</div>
+    <div class="module" onclick="location.href='audits.html'">AUDITS</div>
+    <div class="module" onclick="location.href='contacts.html'">CONTACTS</div>
+    <div class="module" onclick="location.href='emergency.html'">EMERGENCY</div>
   </div>
 
-  <div class="dashboard-section">
-    <h2>Hazard Reporting</h2>
-    <button onclick="alert('Sample hazard report submitted')">Submit Hazard</button>
-  </div>
+  <button class="feedback-btn" onclick="openFeedbackForm()">Provide Feedback</button>
+  <button class="feedback-btn" onclick="endDemo()">End Demo & Return to Homepage</button>
 
-  <div class="dashboard-section">
-    <h2>Reports & Monitoring</h2>
-    <button onclick="alert('Dashboard showing demo reports')">View Dashboard Reports</button>
+  <div id="feedbackForm" style="display:none; margin-top:20px;">
+    <h2 style="text-align:center;">Your Feedback</h2>
+    <textarea id="feedbackText" placeholder="Share your thoughts..." rows="6" style="width:100%; border-radius:6px; padding:10px;"></textarea>
+    <br><br>
+    <button class="feedback-btn" onclick="submitFeedback()">Submit Feedback</button>
   </div>
-
-  <button onclick="window.location.href='index.html'" style="margin-top:40px;">End Demo & Return to Homepage</button>
 </div>
+
+<script>
+function openFeedbackForm() {
+    document.getElementById("feedbackForm").style.display = "block";
+}
+function submitFeedback() {
+    const feedback = document.getElementById("feedbackText").value;
+    if(feedback){
+        localStorage.setItem('userFeedback', feedback);
+        alert('Thank you for your feedback!');
+        document.getElementById("feedbackForm").style.display = "none";
+    } else {
+        alert('Please enter some feedback before submitting.');
+    }
+}
+function endDemo() {
+    window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
