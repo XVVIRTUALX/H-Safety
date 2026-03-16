@@ -4,9 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PutaiaoTech Health & Safety Assist - Terms & Agreement</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+  background-color: #0D3B66;
+  color: #FFD700;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #104E8B;
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+}
+h1, h2 { text-align:center; }
+p, li { margin-bottom: 15px; }
+button {
+  background-color: #FFD700;
+  color: #0D3B66;
+  padding: 15px 25px;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+button:hover { background-color: #fff200; }
+button:disabled { background-color: grey; cursor: not-allowed; }
+label { display:block; margin-top:20px; font-weight:bold; }
+</style>
 </head>
 <body>
+
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
   <h2>Terms & Agreement</h2>
@@ -20,7 +52,8 @@
   </ul>
 
   <label>
-    <input type="checkbox" id="acknowledgeBox"> I confirm I understand the above compliance notice.
+    <input type="checkbox" id="acknowledgeBox">
+    I confirm I understand the above compliance notice.
   </label>
   <button id="continueBtn" disabled>Continue</button>
 </div>
@@ -29,7 +62,6 @@
 document.getElementById("acknowledgeBox").addEventListener("change", function() {
     document.getElementById("continueBtn").disabled = !this.checked;
 });
-
 document.getElementById("continueBtn").addEventListener("click", function() {
     window.location.href = "projects.html";
 });
