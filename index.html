@@ -4,25 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PutaiaoTech Health & Safety Assist - Terms & Agreement</title>
-<style>
+<style/* Header styling */
+.app-header {
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(to right, #0b5fa5, #2ecc71);
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    align-items: center;      /* centers vertically */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+  /* Logo styling */
+.app-logo {
+    max-height: 70px;   /* keeps logo at max height */
+    width: auto;
+    height: auto;
+}
+  /* Responsive adjustments */
+@media (max-width: 600px) {
+    .app-header {
+        padding: 10px;
+    }
+    .app-logo {
+        max-height: 50px;   /* smaller logo on small screens */
+    }
+}
+  
 body {
-  <div class="app-header">
-    <img src="assets/logo.png" alt="PutaiaoTech Logo" class="app-logo">
-</div>
+ 
   .app-header {
     width: 100%;
     padding: 20px 0;
     background-color: #ffffff;
-    background: linear-gradient(to right, #0b5fa5, #2ecc71);
     display: flex;
     justify-content: center;   /* THIS CENTERS IT */
     align-items: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-
-.app-logo {
-    height: 70px;   /* slightly larger for branding */
-    width: auto;
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .app-header {
+        padding: 10px;
+    }
+    .app-logo {
+        max-height: 50px;   /* smaller logo on small screens */
+    }
+}
 }
   background-color: #0D3B66;
   color: #FFD700;
@@ -56,7 +83,11 @@ label { display:block; margin-top:20px; font-weight:bold; }
 </style>
 </head>
 <body>
-
+<!-- Header with logo -->
+<div class="app-header">
+    <img src="https://raw.githubusercontent.com/XVVIRTUALX/H-Safety/main/assets/logo.png" 
+         alt="PutaiaoTech Logo" class="app-logo">
+</div>
 <div class="container">
   <h1>PutaiaoTech Health & Safety Assist</h1>
   <h2>Terms & Agreement</h2>
