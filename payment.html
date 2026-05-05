@@ -96,55 +96,95 @@ footer {
 Business Subscription: $39 NZD / month
 </div>
 
-<!-- STRIPE -->
-<div class="section">
-<h2>Pay Online (Recommended)</h2>
-<p>Secure instant payment. Access activated immediately.</p>
+body>
+</html>
+ <!-- STRIPE -->
+  <a href="https://buy.stripe.com/YOUR-STRIPE-LINK" target="_blank">
+    <button class="pay-btn stripe">
+      Subscribe Now (Card / Apple Pay)
+    </button>
+  </a>
 
-<button onclick="window.location.href='YOUR_STRIPE_LINK_HERE'">
-Pay with Card (Stripe)
-</button>
-</div>
+  <!-- PAYPAL -->
+  <a href="https://www.paypal.com/paypalme/YOURNAME" target="_blank">
+    <button class="pay-btn paypal">
+      Pay with PayPal
+    </button>
+  </a>
 
-<!-- PAYPAL -->
-<div class="section">
-<h2>Pay Online</h2>
-<p>Available via Paypal (subject to approval).</p>
+  <!-- DIVIDER -->
+  <p class="divider">OR</p>
 
-<button onclick="window.location.href='YOUR_PAYPAL_LINK_HERE'">
-Pay with Paypal
-</button>
-</div>
-
- <!-- HNRY INVOICE OPTION -->
-  <button onclick="toggleInvoiceForm()" 
-    style="width:100%; padding:15px; font-size:16px; background:#00A86B; color:white; border:none; border-radius:8px; cursor:pointer;">
-    Request Invoice (HNRY Scan-to-Pay)
+  <!-- INVOICE -->
+  <button onclick="toggleInvoiceForm()" class="pay-btn invoice">
+    Request Invoice (Business Accounts)
   </button>
 
-  <!-- INVOICE FORM -->
+  <!-- FORM -->
   <div id="invoiceForm" style="display:none; margin-top:20px; text-align:left;">
     
-    <input type="text" id="name" placeholder="Full Name" required
-      style="width:100%; padding:10px; margin-bottom:10px;">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="company" placeholder="Company Name">
+    <textarea id="details" placeholder="Number of users or requirements"></textarea>
 
-    <input type="email" id="email" placeholder="Email Address" required
-      style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <input type="text" id="company" placeholder="Company (optional)"
-      style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <textarea id="details" placeholder="Subscription details or notes"
-      style="width:100%; padding:10px; margin-bottom:10px;"></textarea>
-
-    <button onclick="sendInvoiceRequest()"
-      style="width:100%; padding:12px; background:black; color:white; border:none; border-radius:6px;">
-      Submit Invoice Request
+    <button onclick="sendInvoiceRequest()" class="submit-btn">
+      Submit Request
     </button>
 
   </div>
 
 </div>
+
+<style>
+.pay-btn {
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.stripe {
+  background:#635BFF;
+  color:white;
+}
+
+.paypal {
+  background:#0070BA;
+  color:white;
+}
+
+.invoice {
+  background:#333;
+  color:white;
+}
+
+.divider {
+  margin: 20px 0;
+  color:#888;
+}
+
+#invoiceForm input,
+#invoiceForm textarea {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.submit-btn {
+  width:100%;
+  padding:12px;
+  background:black;
+  color:white;
+  border:none;
+  border-radius:6px;
+}
+</style>
 
 <script>
 function toggleInvoiceForm() {
@@ -158,7 +198,7 @@ function sendInvoiceRequest() {
   var company = document.getElementById("company").value;
   var details = document.getElementById("details").value;
 
-  var subject = "HNRY Invoice Request - H-Safety Subscription";
+  var subject = "Invoice Request - H-Safety Subscription";
   var body = 
     "Name: " + name + "%0D%0A" +
     "Email: " + email + "%0D%0A" +
@@ -169,20 +209,4 @@ function sendInvoiceRequest() {
     "mailto:virtualonlinenz@gmail.com?subject=" + subject + "&body=" + body;
 }
 </script>
-
-<footer>
-© 2025–2026 Virtual Online Contact Centre (VOCC). All rights reserved.<br><br>
-VOCC is a trading name of PutaiaoTech. All systems and applications are managed under PutaiaoTech infrastructure.
-</footer>
-
-</div>
-
-<script>
-function requestInvoice() {
-  document.getElementById("invoice-info").innerHTML =
-  "Please contact: your@email.com to request an invoice. Bank details will be provided upon request.";
-}
-</script>
-
-</body>
-</html>
+🧠 W
