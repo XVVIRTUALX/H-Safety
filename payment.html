@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>VOCC Subscription Access</title>
+
+<style>
+
+body {
+  background-color: #0D3B66;
+  color: #FFD700;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #104E8B;
+  border: 2px solid #FFD700;
+  border-radius: 14px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.logo-row img {
+  height: 55px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.7em;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+.section {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.pay-btn:hover {
+  opacity: 0.92;
+}
+
+.nzcard {
+  background: #FFD700;
+  color: #0D3B66;
+}
+
+.hnry {
+  background: #1f7a1f;
+  color: white;
+}
+
+.paypal {
+  background: #0070BA;
+  color: white;
+}
+
+.invoice {
+  background: #333;
+  color: white;
+}
+
+.divider {
+  margin: 20px 0;
+  color: #ddd;
+  font-weight: bold;
+}
+
+#invoiceForm {
+  display: none;
+  margin-top: 20px;
+  text-align: left;
+}
+
+#invoiceForm input,
+#invoiceForm textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.note {
+  margin-top: 15px;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.status-box {
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.25);
+  text-align: left;
+}
+
+.status-box h3 {
+  margin-top: 0;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LOGO -->
+  <div class="logo-row">
+    <img src="/assets/putaiaotech-logo.png" alt="PutaiaoTech Logo">
+  </div>
+
+  <h1>VOCC Health & Safety Platform</h1>
+
+  <p>
+    Virtual Online Contact Centre (VOCC)
+  </p>
+
+  <div class="price">
+    Business Subscription: $39 NZD / month
+  </div>
+
+  <!-- PAYMENT SECTION -->
+  <div class="section">
+
+    <h2>Choose Payment Option</h2>
+
+    <!-- NZ CARD -->
+    <a href="https://buy.stripe.com/YOUR-STRIPE-LINK" target="_blank">
+      <button class="pay-btn nzcard">
+        Pay with NZ Bank Card
+      </button>
+    </a>
+
+    <!-- HNRY -->
+    <a href="https://YOUR-HNRY-PAYMENT-LINK" target="_blank">
+      <button class="pay-btn hnry">
+        Hnry Scan & Pay
+      </button>
+    </a>
+
+    <!-- PAYPAL -->
+    <a href="https://www.paypal.com/paypalme/YOURNAME" target="_blank">
+      <button class="pay-btn paypal">
+        Pay with PayPal
+      </button>
+    </a>
+
+    <p class="divider">OR</p>
+
+    <!-- INVOICE -->
+    <button onclick="toggleInvoiceForm()" class="pay-btn invoice">
+      Request Business Invoice
+    </button>
+
+    <!-- INVOICE FORM -->
+    <div id="invoiceForm">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Full Name"
+        required
+      />
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Email Address"
+        required
+      />
+
+      <input
+        type="text"
+        id="company"
+        placeholder="Company Name"
+      />
+
+      <textarea
+        id="details"
+        rows="5"
+        placeholder="Users required, subscription needs, or additional information"
+      ></textarea>
+
+      <button onclick="sendInvoiceRequest()" class="submit-btn">
+        Submit Invoice Request
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- VOCC STATUS -->
+  <div class="status-box">
+
+    <h3>VOCC Financial Integration</h3>
+
+    <p>
+      Payments processed through the VOCC Financial Spine.
+    </p>
+
+    <ul>
+      <li>Stripe Subscription Processing</li>
+      <li>NZ Bank Card Payments</li>
+      <li>PayPal Support</li>
+      <li>Hnry Tax Reconciliation</li>
+      <li>PutaiaoTechPro Monitoring</li>
+      <li>7-Year Archive & Backup Compliance</li>
+    </ul>
+
+  </div>
+
+  <p class="note">
+    Secure payment processing and reconciliation managed by VOCC and PutaiaoTech.
+  </p>
+
+  <footer>
+    © PutaiaoTech • VOCC Platform Infrastructure
+  </footer>
+
+</div>
+
+<script>
+
+function toggleInvoiceForm() {
+
+  const form = document.getElementById("invoiceForm");
+
+  form.style.display =
+    form.style.display === "block"
+      ? "none"
+      : "block";
+}
+
+function sendInvoiceRequest() {
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const company = document.getElementById("company").value;
+  const details = document.getElementById("details").value;
+
+  const subject =
+    "VOCC Subscription Invoice Request";
+
+  const body =
+    "Name: " + name + "%0D%0A" +
+    "Email: " + email + "%0D%0A" +
+    "Company: " + company + "%0D%0A" +
+    "Details: " + details;
+
+  window.location.href =
+    "mailto:virtualonlinenz@gmail.com" +
+    "?subject=" + subject +
+    "&body=" + body;
+}
+
+</script>
+
+</body>
+</html>
