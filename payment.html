@@ -194,7 +194,23 @@ footer {
         Pay with PayPal
       </button>
     </a>
+<!-- BANK TRANSFER -->
+<button onclick="toggleBankDetails()" class="pay-btn" 
+  style="background:#1a5276; color:white;">
+  NZ Bank Transfer
+</button>
 
+<div id="bankDetails" style="display:none; margin-top:15px; 
+  padding:15px; background:rgba(0,0,0,0.2); border-radius:8px;">
+  <p><strong>Bank:</strong> [Your Bank Name]</p>
+  <p><strong>Account Name:</strong> PutaiaoTech</p>
+  <p><strong>Account Number:</strong> XX-XXXX-XXXXXXX-XX</p>
+  <p><strong>Reference:</strong> Your Company Name</p>
+  <p style="font-size:0.85em; opacity:0.8;">
+    Access confirmed within 24hrs of payment received.
+  </p>
+</div>
+    
     <p class="divider">OR</p>
 
     <!-- INVOICE -->
