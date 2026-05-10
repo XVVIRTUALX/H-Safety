@@ -317,6 +317,11 @@ function sendInvoiceRequest() {
     "mailto:virtualonlinenz@gmail.com" +
     "?subject=" + subject +
     "&body=" + body;
+
+  function toggleBankDetails() {
+  const el = document.getElementById("bankDetails");
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
 }
 
 </script>
