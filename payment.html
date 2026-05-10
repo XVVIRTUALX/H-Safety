@@ -296,17 +296,19 @@ function toggleInvoiceForm() {
       ? "none"
       : "block";
 }
-
 function sendInvoiceRequest() {
-
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
+  
+  if (!name || !email) {
+    alert("Please enter your name and email.");
+    return;
+  }
+
   const company = document.getElementById("company").value;
   const details = document.getElementById("details").value;
 
-  const subject =
-    "VOCC Subscription Invoice Request";
-
+  const subject = "VOCC Subscription Invoice Request";
   const body =
     "Name: " + name + "%0D%0A" +
     "Email: " + email + "%0D%0A" +
@@ -314,9 +316,13 @@ function sendInvoiceRequest() {
     "Details: " + details;
 
   window.location.href =
-    "mailto:virtualonlinenz@gmail.com" +
-    "?subject=" + subject +
-    "&body=" + body;
+    "mailto:virtualonlinenz@gmail.com?subject=" + subject + "&body=" + body;
+
+  // Show confirmation
+  document.getElementById("invoiceForm").innerHTML =
+    "<p style='color:#90EE90; font-size:1.1em;'>✅ Invoice request sent! " +
+    "We'll email you within 24 hours.</p>";
+}
 
   function toggleBankDetails() {
   const el = document.getElementById("bankDetails");
